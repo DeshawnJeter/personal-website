@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrameFeast™ — Cook Like a Champion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ob:#08080F;--void:#0F0F1E;--panel:#16162A;--border:#2A2A4A;
+  --ember:#FF4500;--flame:#FF6B00;--gold:#FFD700;
+  --frost:#00D4FF;--sage-c:#52B788;--blade-c:#EF233C;
+  --success:#00FF7A;--text:#F0F0FF;--muted:#8B8FA8;--dis:#4A4A6A;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ob);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;line-height:1.6}
+.ht{background-image:radial-gradient(circle,rgba(255,255,255,.028) 1px,transparent 1px);background-size:20px 20px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,15,.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px}
+.logo{font-family:'Bangers',cursive;font-size:1.9rem;letter-spacing:.12em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:4px}
+.logo em{color:var(--ember);font-style:normal}
+.logo sup{font-size:.72rem;vertical-align:super;color:var(--muted);letter-spacing:0;font-family:'Nunito',sans-serif;font-weight:700}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:700;font-size:.86rem;letter-spacing:.02em;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:50px;font-weight:800;cursor:pointer;transition:all .2s;text-decoration:none;border:none;font-family:'Nunito',sans-serif}
+.btn-sm{padding:9px 20px;font-size:.83rem}
+.btn-md{padding:13px 28px;font-size:.96rem}
+.btn-primary{background:var(--ember);color:#fff}
+.btn-primary:hover{background:var(--flame);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,69,0,.4)}
+.btn-ghost{background:transparent;color:var(--text);border:2px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ember);color:var(--ember)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:88px 5% 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 65% 50%,rgba(255,69,0,.1) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 15% 70%,rgba(255,215,0,.05) 0%,transparent 50%)}
+.hero-lines{position:absolute;right:0;top:0;width:65%;height:100%;pointer-events:none;background:conic-gradient(from -8deg at 80% 50%,transparent 0 3deg,rgba(255,69,0,.025) 3deg 4deg,transparent 4deg 13deg,rgba(255,69,0,.02) 13deg 14deg,transparent 14deg 26deg,rgba(255,69,0,.018) 26deg 27deg,transparent 27deg 42deg,rgba(255,69,0,.015) 42deg 43deg,transparent 43deg 62deg,rgba(255,69,0,.018) 62deg 63deg,transparent 63deg 85deg,rgba(255,69,0,.015) 85deg 86deg,transparent 86deg 360deg)}
+.hero-content{flex:1;max-width:560px;z-index:2;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px;background:rgba(255,69,0,.1);border:1px solid rgba(255,69,0,.35);border-radius:50px;padding:6px 16px;font-size:.73rem;font-weight:900;color:var(--ember);letter-spacing:.1em;text-transform:uppercase}
+h1.hero-h{font-family:'Bangers',cursive;letter-spacing:.04em;font-size:clamp(3rem,7vw,5.6rem);line-height:1;margin-bottom:20px}
+h1.hero-h .l1{display:block;color:var(--text)}
+h1.hero-h .l2{display:block;color:var(--ember);text-shadow:0 0 70px rgba(255,69,0,.6),0 0 120px rgba(255,69,0,.25)}
+h1.hero-h .l3{display:block;color:var(--gold);font-size:.5em;letter-spacing:.16em;margin-top:6px;text-shadow:0 0 30px rgba(255,215,0,.3)}
+.hero-p{font-size:1rem;color:var(--muted);margin-bottom:36px;max-width:460px;line-height:1.75}
+.hero-p strong{color:var(--text)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.hero-kpis{display:flex;gap:32px;flex-wrap:wrap}
+.kpi .n{font-family:'Bangers',cursive;font-size:2rem;letter-spacing:.05em;color:var(--gold)}
+.kpi .l{font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.hero-art{flex:1;display:flex;justify-content:center;align-items:flex-end;position:relative;min-height:460px;z-index:2}
+.phantom-figure{animation:float 4s ease-in-out infinite;position:relative;display:inline-block}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.phantom-aura{position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,69,0,.2) 0%,transparent 68%);animation:aura 3s ease-in-out infinite;pointer-events:none}
+@keyframes aura{0%,100%{opacity:.45;transform:scale(.92)}50%{opacity:1;transform:scale(1.07)}}
+.fb{position:absolute;background:var(--panel);border:2px solid;border-radius:12px;padding:7px 14px;font-size:.76rem;font-weight:800;display:flex;align-items:center;gap:7px;white-space:nowrap;animation:float 3s ease-in-out infinite}
+.fb-xp{top:30px;right:-15px;border-color:var(--gold);color:var(--gold);animation-delay:.5s}
+.fb-badge{top:155px;right:-35px;border-color:var(--frost);color:var(--frost);animation-delay:.9s}
+.fb-snap{bottom:110px;left:-20px;border-color:var(--success);color:var(--success);animation-delay:1.4s}
+
+/* STATS BAND */
+.stats-band{background:var(--void);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 5%}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:900px;margin:0 auto}
+.stat-item{text-align:center}
+.stat-num{font-family:'Bangers',cursive;font-size:2.6rem;letter-spacing:.06em;line-height:1}
+.stat-num.c-ember{color:var(--ember)}
+.stat-num.c-gold{color:var(--gold)}
+.stat-num.c-success{color:var(--success)}
+.stat-num.c-frost{color:var(--frost)}
+.stat-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px}
+
+/* TICKER */
+.ticker-wrap{background:rgba(255,69,0,.04);border-top:1px solid rgba(255,69,0,.12);border-bottom:1px solid rgba(255,69,0,.12);padding:12px 0;overflow:hidden}
+.ticker{display:flex;animation:tick 30s linear infinite;width:max-content}
+@keyframes tick{to{transform:translateX(-50%)}}
+.tick-item{display:flex;align-items:center;gap:10px;padding:0 32px;font-size:.83rem;font-weight:800;color:var(--muted);white-space:nowrap}
+.tick-item strong{color:var(--text)}
+.tick-sep{color:var(--ember)}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.sec-label{font-size:.7rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);display:block;margin-bottom:10px}
+.sec-title{font-family:'Bangers',cursive;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:.06em;line-height:1.1;margin-bottom:14px}
+.sec-sub{color:var(--muted);font-size:.93rem;line-height:1.75;max-width:520px;margin-bottom:52px}
+
+/* FEATURES */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.feat-card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.feat-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ember);opacity:0;transition:opacity .3s}
+.feat-card:hover::before{opacity:1}
+.feat-card[data-a="frost"]:hover{border-color:rgba(0,212,255,.4)}
+.feat-card[data-a="frost"]::before{background:var(--frost)}
+.feat-card[data-a="success"]:hover{border-color:rgba(0,255,122,.4)}
+.feat-card[data-a="success"]::before{background:var(--success)}
+.feat-card[data-a="gold"]:hover{border-color:rgba(255,215,0,.4)}
+.feat-card[data-a="gold"]::before{background:var(--gold)}
+.feat-card:hover{border-color:rgba(255,69,0,.4)}
+.feat-ico{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;background:rgba(255,69,0,.1);border:1px solid rgba(255,69,0,.2)}
+.feat-card[data-a="frost"] .feat-ico{background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.25)}
+.feat-card[data-a="success"] .feat-ico{background:rgba(0,255,122,.1);border-color:rgba(0,255,122,.25)}
+.feat-card[data-a="gold"] .feat-ico{background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.25)}
+.feat-h{font-size:1.02rem;font-weight:900;margin-bottom:8px}
+.feat-p{color:var(--muted);font-size:.85rem;line-height:1.65}
+.feat-tag{display:inline-flex;margin-top:14px;font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--ember);background:rgba(255,69,0,.1);border-radius:50px;padding:3px 10px}
+.feat-card[data-a="frost"] .feat-tag{color:var(--frost);background:rgba(0,212,255,.1)}
+.feat-card[data-a="success"] .feat-tag{color:var(--success);background:rgba(0,255,122,.1)}
+.feat-card[data-a="gold"] .feat-tag{color:var(--gold);background:rgba(255,215,0,.1)}
+
+/* RECIPE SHOWCASE */
+.recipe-sec{background:var(--void);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.recipe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.recipe-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;transition:all .3s;position:relative;
+}
+.recipe-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.rc-accent{height:3px;width:100%}
+.rc-body{padding:22px}
+.rc-char{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.rc-char-dot{width:10px;height:10px;border-radius:50%}
+.rc-char-name{font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.rc-name{font-family:'Bangers',cursive;font-size:1.45rem;letter-spacing:.06em;margin-bottom:12px;line-height:1.1}
+.rc-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.rc-badge{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:800;padding:3px 10px;border-radius:50px;background:rgba(255,255,255,.05);border:1px solid var(--border)}
+.rc-badge.cost{color:var(--success);border-color:rgba(0,255,122,.2);background:rgba(0,255,122,.06)}
+.rc-badge.time{color:var(--muted)}
+.rc-badge.xp{color:var(--gold);border-color:rgba(255,215,0,.2);background:rgba(255,215,0,.06)}
+.rc-desc{font-size:.83rem;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.rc-footer{display:flex;align-items:center;justify-content:space-between}
+.rc-snap{font-size:.68rem;font-weight:800;color:var(--success)}
+.rc-cook-btn{
+  font-size:.75rem;font-weight:800;padding:6px 14px;border-radius:50px;
+  border:none;cursor:pointer;font-family:'Nunito',sans-serif;
+  background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border);
+  transition:all .2s;
+}
+.rc-cook-btn:hover{background:var(--ember);border-color:var(--ember);color:#fff}
+
+/* CHARACTERS */
+.chars-section{background:var(--ob);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.chars-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.char-card{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:20px 12px;text-align:center;transition:all .3s;cursor:default}
+.char-card:hover{transform:translateY(-7px)}
+.c-phantom:hover{border-color:var(--ember);box-shadow:0 14px 36px rgba(255,69,0,.18)}
+.c-ember:hover{border-color:#FF6A00;box-shadow:0 14px 36px rgba(255,106,0,.18)}
+.c-frost:hover{border-color:var(--frost);box-shadow:0 14px 36px rgba(0,212,255,.18)}
+.c-sage:hover{border-color:var(--sage-c);box-shadow:0 14px 36px rgba(82,183,136,.18)}
+.c-blade:hover{border-color:var(--blade-c);box-shadow:0 14px 36px rgba(239,35,60,.18)}
+.char-svg{width:100%;max-width:108px;display:block;margin:0 auto 14px}
+.char-name{font-family:'Bangers',cursive;font-size:1.25rem;letter-spacing:.08em;margin-bottom:3px}
+.char-role{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:7px}
+.char-desc{font-size:.76rem;color:var(--muted);line-height:1.5}
+.c-phantom .char-name{color:var(--ember)}
+.c-ember .char-name{color:#FF6A00}
+.c-frost .char-name{color:var(--frost)}
+.c-sage .char-name{color:var(--sage-c)}
+.c-blade .char-name{color:var(--blade-c)}
+.lock-tag{display:inline-block;margin-top:8px;font-size:.65rem;font-weight:900;color:var(--gold);background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.2);border-radius:50px;padding:2px 9px}
+
+/* HOW IT WORKS */
+.hiw-sec{background:var(--void)}
+.hiw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative}
+.hiw-grid::before{content:'';position:absolute;top:44px;left:calc(16.67% + 14px);right:calc(16.67% + 14px);height:2px;background:linear-gradient(90deg,var(--ember),var(--success));opacity:.22;pointer-events:none}
+.step-card{text-align:center;padding:8px}
+.step-num{width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-family:'Bangers',cursive;font-size:2rem;letter-spacing:.05em;border:2px solid}
+.sn1{border-color:var(--ember);color:var(--ember);background:rgba(255,69,0,.08)}
+.sn2{border-color:var(--gold);color:var(--gold);background:rgba(255,215,0,.08)}
+.sn3{border-color:var(--success);color:var(--success);background:rgba(0,255,122,.08)}
+.step-icon{font-size:1.8rem;margin-bottom:10px}
+.step-h{font-size:1rem;font-weight:900;margin-bottom:8px}
+.step-p{font-size:.85rem;color:var(--muted);line-height:1.65;max-width:240px;margin:0 auto}
+
+/* MISSION */
+.mission-sec{background:var(--ob);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.mission-box{border:2px solid rgba(0,255,122,.2);border-radius:24px;background:linear-gradient(135deg,rgba(0,255,122,.04),transparent);padding:48px;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.m-icon{font-size:4.5rem;flex-shrink:0}
+.m-text .sec-label{color:var(--success)}
+.m-text h2{font-family:'Bangers',cursive;font-size:2.4rem;letter-spacing:.06em;margin-bottom:12px}
+.m-text p{color:var(--muted);font-size:.93rem;line-height:1.8;max-width:520px}
+.m-text p strong{color:var(--success)}
+.snap-pill{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(0,255,122,.1);border:1px solid rgba(0,255,122,.3);border-radius:50px;padding:8px 20px;font-weight:800;color:var(--success);font-size:.85rem}
+
+/* PRICING */
+.pricing-sec{background:var(--void);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ptoggle{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:48px;flex-wrap:wrap}
+.pt-lbl{font-weight:800;font-size:.88rem;transition:color .2s;cursor:pointer}
+.pt-lbl.active{color:var(--text)}
+.pt-lbl:not(.active){color:var(--muted)}
+.toggle{width:52px;height:28px;border-radius:50px;background:var(--border);cursor:pointer;position:relative;transition:background .25s;flex-shrink:0;border:none}
+.toggle.on{background:var(--ember)}
+.tdot{width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .25s;pointer-events:none}
+.toggle.on .tdot{transform:translateX(24px)}
+.save-tag{background:rgba(255,215,0,.12);border:1px solid rgba(255,215,0,.4);border-radius:50px;font-size:.68rem;font-weight:900;color:var(--gold);padding:3px 10px;letter-spacing:.05em}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.p-card{background:var(--panel);border:2px solid var(--border);border-radius:20px;padding:28px 22px;position:relative;transition:all .3s;display:flex;flex-direction:column}
+.p-card.featured{border-color:var(--ember);box-shadow:0 0 48px rgba(255,69,0,.12)}
+.p-card:hover{transform:translateY(-4px)}
+.p-card.featured:hover{box-shadow:0 8px 56px rgba(255,69,0,.22)}
+.pop-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--ember);color:#fff;font-size:.67rem;font-weight:900;padding:4px 14px;border-radius:50px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.p-icon{font-size:1.8rem;margin-bottom:10px}
+.p-name{font-family:'Bangers',cursive;font-size:1.65rem;letter-spacing:.08em;margin-bottom:4px}
+.p-target{font-size:.72rem;color:var(--muted);font-weight:700;margin-bottom:18px}
+.p-amount{font-family:'Bangers',cursive;font-size:2.8rem;letter-spacing:.03em;line-height:1}
+.p-period{font-size:.82rem;color:var(--muted);font-weight:700}
+.p-annual{font-size:.74rem;color:var(--muted);min-height:18px;margin-top:4px;margin-bottom:22px}
+.p-div{height:1px;background:var(--border);margin-bottom:18px}
+.p-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.p-features li{display:flex;gap:8px;align-items:flex-start;font-size:.8rem;color:var(--muted);line-height:1.4}
+.p-features li .ck{color:var(--ember);font-size:.68rem;margin-top:2px;flex-shrink:0}
+.p-features li.gf .ck{color:var(--gold)}
+.btn-tier{width:100%;padding:12px;border-radius:50px;font-weight:800;font-size:.86rem;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;border:2px solid;margin-top:auto}
+.bt-p{background:var(--ember);color:#fff;border-color:var(--ember)}
+.bt-p:hover{background:var(--flame);border-color:var(--flame)}
+.bt-o{background:transparent;color:var(--text);border-color:var(--border)}
+.bt-o:hover{border-color:var(--ember);color:var(--ember)}
+
+/* TESTIMONIALS */
+.testi-sec{background:var(--ob);border-top:1px solid var(--border)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.t-card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .3s}
+.t-card:hover{border-color:rgba(255,215,0,.25)}
+.t-stars{color:var(--gold);font-size:.88rem;margin-bottom:10px;letter-spacing:2px}
+.t-text{font-size:.88rem;line-height:1.75;color:var(--muted);font-style:italic;margin-bottom:18px}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;border:2px solid var(--border)}
+.t-name{font-weight:900;font-size:.86rem}
+.t-detail{font-size:.72rem;color:var(--muted)}
+.t-snap-tag{display:inline-block;margin-top:3px;font-size:.64rem;font-weight:800;color:var(--success);background:rgba(0,255,122,.1);border-radius:50px;padding:1px 8px}
+
+/* FAQ */
+.faq-sec{background:var(--void);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:rgba(255,69,0,.4)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-weight:800;font-size:.95rem;gap:16px;user-select:none}
+.faq-q:hover{color:var(--ember)}
+.faq-arrow{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .3s}
+.faq-item.open .faq-arrow{background:rgba(255,69,0,.15);border-color:rgba(255,69,0,.4);color:var(--ember);transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a-inner{padding:0 24px 20px;font-size:.88rem;color:var(--muted);line-height:1.75}
+.faq-a-inner strong{color:var(--text)}
+
+/* CTA */
+.cta-sec{background:linear-gradient(135deg,rgba(255,69,0,.07),rgba(255,215,0,.03));border-top:1px solid var(--border);text-align:center;padding:80px 5%}
+.cta-sec .sec-sub{margin:0 auto 36px}
+.email-form{display:flex;gap:12px;max-width:440px;margin:0 auto 24px;flex-wrap:wrap}
+.email-input{flex:1;min-width:200px;background:var(--panel);border:2px solid var(--border);border-radius:50px;padding:14px 20px;color:var(--text);font-family:'Nunito',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s}
+.email-input:focus{border-color:var(--ember)}
+.email-input::placeholder{color:var(--dis)}
+.store-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+.store-btn{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:10px 18px;text-decoration:none;transition:all .2s;color:var(--muted)}
+.store-btn:hover{border-color:var(--ember);color:var(--text);transform:translateY(-2px)}
+.store-btn .si{font-size:1.4rem}
+.store-btn div{text-align:left}
+.store-btn small{display:block;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;opacity:.6}
+.store-btn span{display:block;font-size:.82rem;font-weight:800}
+
+/* FOOTER */
+footer{background:var(--void);border-top:1px solid var(--border);padding:56px 5% 28px}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.ft-brand p{color:var(--muted);font-size:.82rem;line-height:1.65;max-width:260px;margin:10px 0 18px}
+.socials{display:flex;gap:10px;flex-wrap:wrap}
+.soc-btn{width:34px;height:34px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;text-decoration:none;color:var(--muted);transition:all .2s}
+.soc-btn:hover{border-color:var(--ember);color:var(--text)}
+.ft-col h5{font-weight:900;font-size:.73rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:14px}
+.ft-col a{display:block;color:var(--muted);text-decoration:none;font-size:.82rem;margin-bottom:9px;transition:color .2s}
+.ft-col a:hover{color:var(--text)}
+.ft-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ft-copy{color:var(--muted);font-size:.74rem}
+.ft-legal{display:flex;gap:18px;flex-wrap:wrap}
+.ft-legal a{color:var(--muted);text-decoration:none;font-size:.74rem;transition:color .2s}
+.ft-legal a:hover{color:var(--text)}
+
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.fade-up.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:960px){.chars-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{display:none;flex-direction:column;align-items:flex-start;position:fixed;top:68px;left:0;right:0;background:var(--void);border-bottom:1px solid var(--border);padding:20px 5%;gap:16px;z-index:199}
+  .nav-links.open{display:flex}
+  .hero{flex-direction:column;text-align:center;padding-top:96px}
+  .hero-p,.hero-btns{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-kpis{justify-content:center}
+  .hero-art{min-height:280px;width:100%}
+  .fb{display:none}
+  .hiw-grid{grid-template-columns:1fr}
+  .hiw-grid::before{display:none}
+  .mission-box{padding:32px 24px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  section{padding:60px 4%}
+  .chars-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
+  .email-form{flex-direction:column}
+  .ft-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body class="ht">
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Frame<em>Feast</em><sup>™</sup></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#features">Features</a>
+    <a href="#recipes">Recipes</a>
+    <a href="#characters">Characters</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#mission">Mission</a>
+    <a href="#early-access" class="btn btn-sm btn-primary">Get Early Access</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="eyebrow">🔥 Beta — Join the Waitlist Today</div>
+    <h1 class="hero-h">
+      <span class="l1">Cook Like a</span>
+      <span class="l2">Champion</span>
+      <span class="l3">Eat Like a Legend</span>
+    </h1>
+    <p class="hero-p">The <strong>AI-powered, anime-inspired</strong> budget recipe app built for real kitchens. Scan your pantry, find SNAP stores, earn XP, and level up your cooking — <strong>free for SNAP/EBT users.</strong></p>
+    <div class="hero-btns">
+      <a href="#early-access" class="btn btn-md btn-primary">🎮 Get Early Access</a>
+      <a href="#features" class="btn btn-md btn-ghost">See Features</a>
+    </div>
+    <div class="hero-kpis">
+      <div class="kpi"><div class="n">200+</div><div class="l">Budget Recipes</div></div>
+      <div class="kpi"><div class="n">5</div><div class="l">Characters</div></div>
+      <div class="kpi"><div class="n">Free</div><div class="l">For SNAP Users</div></div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="phantom-figure">
+      <div class="phantom-aura"></div>
+      <svg width="260" height="390" viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="70" cy="130" r="70" fill="#FF4500" opacity="0.05"/>
+        <rect x="46" y="6" width="48" height="66" rx="9" fill="#EEEEFF"/>
+        <rect x="36" y="68" width="68" height="11" rx="5" fill="#D0D0E8"/>
+        <line x1="60" y1="18" x2="60" y2="68" stroke="#D0D0E8" stroke-width="1" opacity="0.5"/>
+        <line x1="70" y1="10" x2="70" y2="68" stroke="#D0D0E8" stroke-width="1" opacity="0.5"/>
+        <line x1="80" y1="18" x2="80" y2="68" stroke="#D0D0E8" stroke-width="1" opacity="0.5"/>
+        <circle cx="70" cy="107" r="33" fill="#0D0D1E"/>
+        <ellipse cx="56" cy="102" rx="14" ry="11" fill="#FF4500" opacity="0.22"/>
+        <ellipse cx="84" cy="102" rx="14" ry="11" fill="#FF4500" opacity="0.22"/>
+        <ellipse cx="56" cy="102" rx="9" ry="7" fill="#FF4500"/>
+        <ellipse cx="84" cy="102" rx="9" ry="7" fill="#FF4500"/>
+        <ellipse cx="56" cy="102" rx="4.5" ry="3.5" fill="#FFD700"/>
+        <ellipse cx="84" cy="102" rx="4.5" ry="3.5" fill="#FFD700"/>
+        <circle cx="56" cy="102" r="1.5" fill="#FF8C00"/>
+        <circle cx="84" cy="102" r="1.5" fill="#FF8C00"/>
+        <path d="M14,140 Q40,134 70,132 Q100,134 126,140 L132,215 Q70,222 8,215 Z" fill="#08080F"/>
+        <path d="M14,140 Q70,150 126,140" stroke="#FF4500" stroke-width="1.5" fill="none" opacity="0.55"/>
+        <line x1="28" y1="148" x2="20" y2="215" stroke="#131326" stroke-width="2.5" opacity="0.6"/>
+        <line x1="70" y1="144" x2="70" y2="215" stroke="#131326" stroke-width="2.5" opacity="0.4"/>
+        <line x1="112" y1="148" x2="120" y2="215" stroke="#131326" stroke-width="2.5" opacity="0.6"/>
+      </svg>
+      <div class="fb fb-xp">⚡ +250 XP</div>
+      <div class="fb fb-badge">🏆 Badge Unlocked!</div>
+      <div class="fb fb-snap">✅ SNAP Eligible</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item fade-up">
+      <div class="stat-num c-ember">200+</div>
+      <div class="stat-label">Original Recipes</div>
+    </div>
+    <div class="stat-item fade-up" style="transition-delay:.1s">
+      <div class="stat-num c-gold">5</div>
+      <div class="stat-label">Unique Characters</div>
+    </div>
+    <div class="stat-item fade-up" style="transition-delay:.2s">
+      <div class="stat-num c-success">50K+</div>
+      <div class="stat-label">SNAP Stores Mapped</div>
+    </div>
+    <div class="stat-item fade-up" style="transition-delay:.3s">
+      <div class="stat-num c-frost">$5</div>
+      <div class="stat-label">Max Cost per Serving</div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>200+ Budget Recipes</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>AI Pantry Scanner</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Free for SNAP/EBT</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>5 Original Characters</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Earn XP &amp; Badges</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>SNAP Store Locator</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Anime-Inspired Design</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Meals Under $5/Serving</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>200+ Budget Recipes</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>AI Pantry Scanner</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Free for SNAP/EBT</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>5 Original Characters</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Earn XP &amp; Badges</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>SNAP Store Locator</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Anime-Inspired Design</strong></div>
+    <div class="tick-item"><span class="tick-sep">◆</span><strong>Meals Under $5/Serving</strong></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="fade-up">
+    <span class="sec-label">Why FrameFeast</span>
+    <h2 class="sec-title">Your Kitchen.<br>Leveled Up.</h2>
+    <p class="sec-sub">Four game-changing tools that make budget cooking smarter, more rewarding, and surprisingly fun.</p>
+  </div>
+  <div class="feats fade-up">
+    <div class="feat-card">
+      <div class="feat-ico">📷</div>
+      <div class="feat-h">AI Pantry Scanner</div>
+      <p class="feat-p">Point your camera at any shelf. Our AI identifies ingredients in seconds and instantly surfaces every recipe you can make right now — no typing required.</p>
+      <span class="feat-tag">AI-Powered</span>
+    </div>
+    <div class="feat-card" data-a="success">
+      <div class="feat-ico">📍</div>
+      <div class="feat-h">SNAP Store Locator</div>
+      <p class="feat-p">Find every SNAP/EBT-authorized store near you using real USDA data. Get directions, hours, and deal alerts the moment ingredients go on sale.</p>
+      <span class="feat-tag">SNAP Ready</span>
+    </div>
+    <div class="feat-card" data-a="gold">
+      <div class="feat-ico">🎮</div>
+      <div class="feat-h">Gamified Cooking</div>
+      <p class="feat-p">Earn XP every time you cook. Unlock badges, build streaks, and climb the leaderboard. Five original characters guide you each step of the way.</p>
+      <span class="feat-tag">Earn XP</span>
+    </div>
+    <div class="feat-card" data-a="frost">
+      <div class="feat-ico">💰</div>
+      <div class="feat-h">Budget Recipes</div>
+      <p class="feat-p">200+ original recipes designed for real budgets. Smart ingredient swaps, macro tracking, and a 7-day meal planner — all built right in.</p>
+      <span class="feat-tag">Under $5/Serving</span>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPE SHOWCASE -->
+<section class="recipe-sec" id="recipes">
+  <div class="fade-up">
+    <span class="sec-label">Recipe Preview</span>
+    <h2 class="sec-title">Real Recipes.<br>Real Budgets.</h2>
+    <p class="sec-sub">Every recipe is original, SNAP-eligible, and guided by one of your five characters. Here's a taste.</p>
+  </div>
+  <div class="recipe-grid fade-up">
+
+    <div class="recipe-card">
+      <div class="rc-accent" style="background:linear-gradient(90deg,#FF4500,#FF6B00)"></div>
+      <div class="rc-body">
+        <div class="rc-char"><div class="rc-char-dot" style="background:#FF4500"></div><span class="rc-char-name">Chef Phantom</span></div>
+        <div class="rc-name">Phantom's Midnight Ramen</div>
+        <div class="rc-meta">
+          <span class="rc-badge cost">💰 $3.50/serving</span>
+          <span class="rc-badge time">⏱ 25 min</span>
+          <span class="rc-badge xp">⚡ +150 XP</span>
+        </div>
+        <p class="rc-desc">A rich, soul-warming broth built from pantry essentials. Soy, ginger, garlic — the holy trinity. Phantom's signature technique turns simple into legendary.</p>
+        <div class="rc-footer">
+          <span class="rc-snap">✅ SNAP Eligible</span>
+          <button class="rc-cook-btn">Preview Recipe →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <div class="rc-accent" style="background:linear-gradient(90deg,#FF6A00,#FFD700)"></div>
+      <div class="rc-body">
+        <div class="rc-char"><div class="rc-char-dot" style="background:#FF6A00"></div><span class="rc-char-name">Ember</span></div>
+        <div class="rc-name">Ember's Volcano Rice Bowl</div>
+        <div class="rc-meta">
+          <span class="rc-badge cost">💰 $2.20/serving</span>
+          <span class="rc-badge time">⏱ 15 min</span>
+          <span class="rc-badge xp">⚡ +100 XP</span>
+        </div>
+        <p class="rc-desc">High-heat, high-flavor. Spiced ground protein over steamed rice with a sriracha drizzle. Ember's favorite when time is short and hunger hits hard.</p>
+        <div class="rc-footer">
+          <span class="rc-snap">✅ SNAP Eligible</span>
+          <button class="rc-cook-btn">Preview Recipe →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <div class="rc-accent" style="background:linear-gradient(90deg,#52B788,#74C69D)"></div>
+      <div class="rc-body">
+        <div class="rc-char"><div class="rc-char-dot" style="background:#52B788"></div><span class="rc-char-name">Sage</span></div>
+        <div class="rc-name">Sage's Forest Harvest Stir-Fry</div>
+        <div class="rc-meta">
+          <span class="rc-badge cost">💰 $1.80/serving</span>
+          <span class="rc-badge time">⏱ 18 min</span>
+          <span class="rc-badge xp">⚡ +125 XP</span>
+        </div>
+        <p class="rc-desc">Seasonal veggies, sesame oil, and a savory garlic sauce. Sage proves that plant-based eating doesn't have to be expensive — or boring.</p>
+        <div class="rc-footer">
+          <span class="rc-snap">✅ SNAP Eligible</span>
+          <button class="rc-cook-btn">Preview Recipe →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-card">
+      <div class="rc-accent" style="background:linear-gradient(90deg,#00D4FF,#00B4D8)"></div>
+      <div class="rc-body">
+        <div class="rc-char"><div class="rc-char-dot" style="background:#00D4FF"></div><span class="rc-char-name">Dr. Frost</span></div>
+        <div class="rc-name">Frost's Arctic Smoothie Bowl</div>
+        <div class="rc-meta">
+          <span class="rc-badge cost">💰 $2.40/serving</span>
+          <span class="rc-badge time">⏱ 10 min</span>
+          <span class="rc-badge xp">⚡ +75 XP</span>
+        </div>
+        <p class="rc-desc">Precision-blended frozen fruit base, calculated macros, no-waste toppings. Frost's nutritionally optimized approach to breakfast — engineered for performance.</p>
+        <div class="rc-footer">
+          <span class="rc-snap">✅ SNAP Eligible</span>
+          <button class="rc-cook-btn">Preview Recipe →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p style="text-align:center;margin-top:32px;color:var(--muted);font-size:.88rem">Showing 4 of 200+ original recipes. <a href="#early-access" style="color:var(--ember);font-weight:800;text-decoration:none">Unlock the full library →</a></p>
+</section>
+
+<!-- CHARACTERS -->
+<section class="chars-section" id="characters">
+  <div class="fade-up">
+    <span class="sec-label">Original Characters</span>
+    <h2 class="sec-title">Choose Your Guide</h2>
+    <p class="sec-sub">Five 100% original characters, each with a unique culinary mastery. All names, designs, and backstories are exclusive IP of FrameFeast™.</p>
+  </div>
+  <div class="chars-grid fade-up">
+    <div class="char-card c-phantom">
+      <svg class="char-svg" viewBox="0 0 120 190" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="105" r="55" fill="#FF4500" opacity="0.05"/>
+        <rect x="38" y="4" width="44" height="58" rx="7" fill="#EEEEFF"/>
+        <rect x="30" y="58" width="60" height="10" rx="5" fill="#D0D0E8"/>
+        <line x1="51" y1="14" x2="51" y2="58" stroke="#D0D0E8" stroke-width="1" opacity="0.5"/>
+        <line x1="60" y1="8" x2="60" y2="58" stroke="#D0D0E8" stroke-width="1" opacity="0.5"/>
+        <line x1="69" y1="14" x2="69" y2="58" stroke="#D0D0E8" stroke-width="1" opacity="0.5"/>
+        <circle cx="60" cy="92" r="28" fill="#0D0D1E"/>
+        <ellipse cx="48" cy="88" rx="11" ry="9" fill="#FF4500" opacity="0.25"/>
+        <ellipse cx="72" cy="88" rx="11" ry="9" fill="#FF4500" opacity="0.25"/>
+        <ellipse cx="48" cy="88" rx="8" ry="6" fill="#FF4500"/>
+        <ellipse cx="72" cy="88" rx="8" ry="6" fill="#FF4500"/>
+        <ellipse cx="48" cy="88" rx="3.5" ry="2.8" fill="#FFD700"/>
+        <ellipse cx="72" cy="88" rx="3.5" ry="2.8" fill="#FFD700"/>
+        <path d="M10,122 Q34,116 60,114 Q86,116 110,122 L115,185 Q60,192 5,185 Z" fill="#08080F"/>
+        <path d="M10,122 Q60,132 110,122" stroke="#FF4500" stroke-width="1.5" fill="none" opacity="0.55"/>
+        <line x1="22" y1="130" x2="15" y2="185" stroke="#131326" stroke-width="2" opacity="0.6"/>
+        <line x1="60" y1="126" x2="60" y2="185" stroke="#131326" stroke-width="2" opacity="0.4"/>
+        <line x1="98" y1="130" x2="105" y2="185" stroke="#131326" stroke-width="2" opacity="0.6"/>
+      </svg>
+      <div class="char-name">Chef Phantom</div>
+      <div class="char-role">Culinary Master</div>
+      <div class="char-desc">The mysterious guide who has cooked in every kitchen on earth.</div>
+    </div>
+    <div class="char-card c-ember">
+      <svg class="char-svg" viewBox="0 0 120 190" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18,65 Q20,38 34,22 Q38,44 43,30 Q48,14 57,6 Q59,28 64,15 Q68,6 73,20 Q78,10 86,24 Q90,42 94,32 Q100,18 104,40 Q106,55 110,65" fill="#FF6A00"/>
+        <path d="M24,63 Q28,42 40,28 Q44,48 50,35 Q56,20 62,12 Q67,28 72,16 Q77,26 84,36 Q88,52 94,44 Q99,56 104,63" fill="#FFD700" opacity="0.65"/>
+        <circle cx="60" cy="96" r="27" fill="#C05A3A"/>
+        <ellipse cx="48" cy="93" rx="8" ry="10" fill="#1A0800"/>
+        <ellipse cx="72" cy="93" rx="8" ry="10" fill="#1A0800"/>
+        <circle cx="50" cy="88" r="3" fill="white" opacity="0.9"/>
+        <circle cx="74" cy="88" r="3" fill="white" opacity="0.9"/>
+        <path d="M47,108 Q60,120 73,108" stroke="#1A0800" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <rect x="34" y="123" width="52" height="62" rx="5" fill="#CC2200"/>
+        <rect x="41" y="126" width="38" height="57" rx="4" fill="#F5EDE4"/>
+        <rect x="30" y="143" width="7" height="16" rx="3.5" fill="#F5EDE4"/>
+        <rect x="83" y="143" width="7" height="16" rx="3.5" fill="#F5EDE4"/>
+      </svg>
+      <div class="char-name">Ember</div>
+      <div class="char-role">Daily Challenge Host</div>
+      <div class="char-desc">High-energy champ who lost it all and rebuilt from scratch through fire.</div>
+      <div class="lock-tag">🔒 30 XP to Unlock</div>
+    </div>
+    <div class="char-card c-frost">
+      <svg class="char-svg" viewBox="0 0 120 190" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="90" r="50" fill="#00D4FF" opacity="0.05"/>
+        <polygon points="60,30 86,44 92,72 78,94 42,94 28,72 34,44" fill="#87CEEB"/>
+        <polygon points="60,34 78,46 83,68 60,84 37,68 42,46" fill="#B8E6F5" opacity="0.45"/>
+        <polygon points="44,66 52,61 60,66 52,71" fill="#005C8A"/>
+        <polygon points="60,66 68,61 76,66 68,71" fill="#005C8A"/>
+        <polygon points="46,65 50,63 54,65 50,67" fill="#00D4FF" opacity="0.8"/>
+        <polygon points="66,65 70,63 74,65 70,67" fill="#00D4FF" opacity="0.8"/>
+        <line x1="50" y1="82" x2="70" y2="82" stroke="#005C8A" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="50" y="94" width="20" height="13" fill="#7EC8E3"/>
+        <rect x="22" y="107" width="76" height="78" rx="5" fill="#E8F4FF"/>
+        <polygon points="50,107 60,122 60,185 22,185 22,107" fill="#CBDEF0"/>
+        <polygon points="70,107 60,122 60,185 98,185 98,107" fill="#CBDEF0"/>
+        <line x1="60" y1="122" x2="60" y2="185" stroke="#A0C0DC" stroke-width="1.5"/>
+        <path d="M33,135 L39,141 M36,138 L36,132 M36,138 L42,138" stroke="#00D4FF" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+        <rect x="44" y="155" width="30" height="22" rx="3" fill="#CCE4F5" opacity="0.5"/>
+      </svg>
+      <div class="char-name">Dr. Frost</div>
+      <div class="char-role">Nutrition Expert</div>
+      <div class="char-desc">Crystalline scientist who believes nutrition is a right, not a privilege.</div>
+      <div class="lock-tag">🔒 Flame Rank</div>
+    </div>
+    <div class="char-card c-sage">
+      <svg class="char-svg" viewBox="0 0 120 190" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="40" cy="47" rx="14" ry="6" fill="#2D6A4F" transform="rotate(-45 40 47)"/>
+        <ellipse cx="50" cy="39" rx="14" ry="6" fill="#52B788" transform="rotate(-20 50 39)"/>
+        <ellipse cx="60" cy="35" rx="14" ry="6" fill="#74C69D"/>
+        <ellipse cx="70" cy="39" rx="14" ry="6" fill="#52B788" transform="rotate(20 70 39)"/>
+        <ellipse cx="80" cy="47" rx="14" ry="6" fill="#2D6A4F" transform="rotate(45 80 47)"/>
+        <circle cx="60" cy="92" r="28" fill="#9A6B44"/>
+        <circle cx="46" cy="99" r="8" fill="#C4856A" opacity="0.3"/>
+        <circle cx="74" cy="99" r="8" fill="#C4856A" opacity="0.3"/>
+        <ellipse cx="49" cy="89" rx="7" ry="8" fill="#2D4A20"/>
+        <ellipse cx="71" cy="89" rx="7" ry="8" fill="#2D4A20"/>
+        <circle cx="51" cy="84" r="2.8" fill="white" opacity="0.85"/>
+        <circle cx="73" cy="84" r="2.8" fill="white" opacity="0.85"/>
+        <path d="M49,105 Q60,115 71,105" stroke="#5A3C28" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M14,125 Q36,119 60,117 Q84,119 106,125 L112,185 Q60,192 8,185 Z" fill="#2D6A4F"/>
+        <path d="M14,125 Q60,136 106,125" stroke="#52B788" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <circle cx="20" cy="108" r="2.5" fill="#74C69D" opacity="0.65"/>
+        <circle cx="100" cy="113" r="2" fill="#52B788" opacity="0.55"/>
+      </svg>
+      <div class="char-name">Sage</div>
+      <div class="char-role">Wellness Guide</div>
+      <div class="char-desc">Grew up foraging with her grandmother. Knowledge is her most powerful ingredient.</div>
+      <div class="lock-tag">🔒 Phantom Rank</div>
+    </div>
+    <div class="char-card c-blade">
+      <svg class="char-svg" viewBox="0 0 120 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="24" y="14" width="72" height="82" rx="20" fill="#2B2D42"/>
+        <rect x="26" y="16" width="68" height="78" rx="18" fill="none" stroke="#8D99AE" stroke-width="1.2" opacity="0.4"/>
+        <rect x="32" y="14" width="56" height="38" rx="16" fill="#3D3F5C"/>
+        <rect x="28" y="58" width="64" height="18" rx="9" fill="#EF233C"/>
+        <rect x="30" y="59" width="60" height="9" rx="6" fill="#FF6B8A" opacity="0.45"/>
+        <rect x="32" y="59" width="18" height="5" rx="3" fill="white" opacity="0.2"/>
+        <rect x="18" y="46" width="10" height="24" rx="5" fill="#2B2D42"/>
+        <rect x="92" y="46" width="10" height="24" rx="5" fill="#2B2D42"/>
+        <rect x="32" y="88" width="56" height="16" rx="8" fill="#2B2D42"/>
+        <rect x="44" y="102" width="32" height="12" fill="#3D3F5C"/>
+        <rect x="18" y="114" width="84" height="71" rx="7" fill="#2B2D42"/>
+        <rect x="32" y="118" width="56" height="63" rx="5" fill="#3A3C56"/>
+        <line x1="60" y1="118" x2="60" y2="181" stroke="#2B2D42" stroke-width="2"/>
+        <rect x="22" y="122" width="36" height="38" rx="5" fill="#3D3F5C"/>
+        <rect x="62" y="122" width="36" height="38" rx="5" fill="#3D3F5C"/>
+        <line x1="26" y1="150" x2="54" y2="150" stroke="#EF233C" stroke-width="2.5"/>
+        <line x1="66" y1="150" x2="94" y2="150" stroke="#EF233C" stroke-width="2.5"/>
+        <line x1="32" y1="117" x2="88" y2="117" stroke="#EF233C" stroke-width="1.5" opacity="0.55"/>
+        <rect x="96" y="138" width="5" height="36" rx="2.5" fill="#8D99AE" opacity="0.7"/>
+        <polygon points="96,136 101,136 98.5,129" fill="#8D99AE" opacity="0.7"/>
+      </svg>
+      <div class="char-name">Blade</div>
+      <div class="char-role">Technique Master</div>
+      <div class="char-desc">Applies martial arts discipline to culinary precision. "Speed without precision is waste."</div>
+      <div class="lock-tag">🔒 Phantom Rank</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="hiw-sec" id="how-it-works">
+  <div class="fade-up">
+    <span class="sec-label">Get Cooking</span>
+    <h2 class="sec-title">3 Steps to Legendary Meals</h2>
+    <p class="sec-sub">From empty fridge to champion cook in minutes.</p>
+  </div>
+  <div class="hiw-grid fade-up">
+    <div class="step-card">
+      <div class="step-num sn1">01</div>
+      <div class="step-icon">📷</div>
+      <div class="step-h">Scan Your Pantry</div>
+      <p class="step-p">Point your camera at your shelf. The AI identifies what you have in seconds — or use the free manual entry mode.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num sn2">02</div>
+      <div class="step-icon">🍳</div>
+      <div class="step-h">Pick Your Recipe</div>
+      <p class="step-p">AI matches your ingredients to budget-friendly recipes. Filter by character, cuisine, cost, or cook time.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num sn3">03</div>
+      <div class="step-icon">🏆</div>
+      <div class="step-h">Cook &amp; Earn XP</div>
+      <p class="step-p">Follow guided steps with optional voice assist. Complete recipes to earn XP, unlock badges, and rank up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION / SNAP -->
+<section class="mission-sec" id="mission">
+  <div class="mission-box fade-up">
+    <div class="m-icon">🥢</div>
+    <div class="m-text">
+      <span class="sec-label">Our Mission</span>
+      <h2>Cooking Is for Everyone</h2>
+      <p>FrameFeast was built for kitchens that don't have it all. <strong>SNAP/EBT users get full Flame Rank access completely free</strong> — no card numbers, no shame, no paywalls on nutrition. We also offer student discounts and a hardship waiver program. The mission and the money stay separate.</p>
+      <div class="snap-pill">✅ Verified SNAP Users Get Flame Rank Free</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-sec" id="pricing">
+  <div class="fade-up" style="text-align:center">
+    <span class="sec-label">Pick Your Rank</span>
+    <h2 class="sec-title">Pricing That Respects Your Budget</h2>
+    <p class="sec-sub" style="margin:0 auto 40px">Start free forever. Upgrade when you're ready. Cancel anytime — no guilt.</p>
+  </div>
+  <div class="ptoggle fade-up">
+    <span class="pt-lbl active" id="lbl-monthly">Monthly</span>
+    <button class="toggle" id="priceToggle" aria-label="Toggle annual pricing"><div class="tdot"></div></button>
+    <span class="pt-lbl" id="lbl-annual">Annual</span>
+    <span class="save-tag">Save 33%</span>
+  </div>
+  <div class="pricing-grid fade-up">
+    <div class="p-card">
+      <div class="p-icon">🥢</div>
+      <div class="p-name">Soul Kitchen</div>
+      <div class="p-target">Free forever — built for everyone</div>
+      <div><span class="p-amount">$0</span><span class="p-period">/month</span></div>
+      <div class="p-annual">&nbsp;</div>
+      <div class="p-div"></div>
+      <ul class="p-features">
+        <li><span class="ck">◆</span>200+ budget recipes</li>
+        <li><span class="ck">◆</span>AI pantry scanner (3 scans/day)</li>
+        <li><span class="ck">◆</span>SNAP/EBT store locator</li>
+        <li><span class="ck">◆</span>Basic badges &amp; daily challenges</li>
+        <li><span class="ck">◆</span>7-day meal planner</li>
+        <li><span class="ck">◆</span>Chef Phantom character</li>
+      </ul>
+      <button class="btn-tier bt-o">Start Free</button>
+    </div>
+    <div class="p-card featured">
+      <div class="pop-badge">Most Popular</div>
+      <div class="p-icon">🔥</div>
+      <div class="p-name">Flame Rank</div>
+      <div class="p-target">Budget-conscious cooks who want it all</div>
+      <div><span class="p-amount" data-monthly="$4.99" data-annual="$3.33">$4.99</span><span class="p-period">/month</span></div>
+      <div class="p-annual" id="flame-annual">or $39.99/year</div>
+      <div class="p-div"></div>
+      <ul class="p-features">
+        <li><span class="ck">◆</span>Everything in Soul Kitchen</li>
+        <li class="gf"><span class="ck">◆</span>Unlimited AI pantry scans</li>
+        <li class="gf"><span class="ck">◆</span>Exclusive seasonal recipe packs</li>
+        <li class="gf"><span class="ck">◆</span>Nutritional tracking + macros</li>
+        <li class="gf"><span class="ck">◆</span>Ad-free experience</li>
+        <li class="gf"><span class="ck">◆</span>Ember + Dr. Frost unlocked</li>
+        <li class="gf"><span class="ck">◆</span>Offline access (50 recipes)</li>
+      </ul>
+      <button class="btn-tier bt-p">Upgrade to Flame</button>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">🏛️</div>
+      <div class="p-name">Phantom Rank</div>
+      <div class="p-target">Enthusiast cooks &amp; creators</div>
+      <div><span class="p-amount" data-monthly="$9.99" data-annual="$6.66">$9.99</span><span class="p-period">/month</span></div>
+      <div class="p-annual" id="phantom-annual">or $79.99/year</div>
+      <div class="p-div"></div>
+      <ul class="p-features">
+        <li><span class="ck">◆</span>Everything in Flame Rank</li>
+        <li class="gf"><span class="ck">◆</span>All 5 characters unlocked</li>
+        <li class="gf"><span class="ck">◆</span>Family sharing (up to 5 accounts)</li>
+        <li class="gf"><span class="ck">◆</span>Legendary exclusive recipe packs</li>
+        <li class="gf"><span class="ck">◆</span>Creator affiliate program access</li>
+        <li class="gf"><span class="ck">◆</span>Monthly live cooking events</li>
+        <li class="gf"><span class="ck">◆</span>Early access to new features</li>
+      </ul>
+      <button class="btn-tier bt-o">Go Phantom</button>
+    </div>
+    <div class="p-card">
+      <div class="p-icon">👨‍👩‍👧‍👦</div>
+      <div class="p-name">Feast Clan</div>
+      <div class="p-target">Households that cook together</div>
+      <div><span class="p-amount" data-monthly="$14.99" data-annual="$9.99">$14.99</span><span class="p-period">/month</span></div>
+      <div class="p-annual" id="clan-annual">or $119.99/year</div>
+      <div class="p-div"></div>
+      <ul class="p-features">
+        <li><span class="ck">◆</span>Everything in Phantom Rank</li>
+        <li class="gf"><span class="ck">◆</span>Up to 6 family accounts</li>
+        <li class="gf"><span class="ck">◆</span>Individual XP per family member</li>
+        <li class="gf"><span class="ck">◆</span>Shared pantry &amp; shopping list</li>
+        <li class="gf"><span class="ck">◆</span>Parental controls for minors</li>
+      </ul>
+      <button class="btn-tier bt-o">Build Your Clan</button>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:24px;font-size:.8rem;color:var(--muted)">🔥 SNAP/EBT users get Flame Rank free. <a href="#mission" style="color:var(--success);text-decoration:none;font-weight:800">Learn more →</a></p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec" id="testimonials">
+  <div class="fade-up">
+    <span class="sec-label">The Community</span>
+    <h2 class="sec-title">The Community Is Cooking</h2>
+    <p class="sec-sub">Real people. Real kitchens. Real results.</p>
+  </div>
+  <div class="testi-grid fade-up">
+    <div class="t-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"I never thought I'd actually enjoy cooking. The XP system makes me want to cook every single night just to unlock the next badge. My grocery bill dropped by $80 last month."</p>
+      <div class="t-author">
+        <div class="t-av" style="background:rgba(255,106,0,.15);border-color:rgba(255,106,0,.3)">🔥</div>
+        <div><div class="t-name">Marcus T.</div><div class="t-detail">Flame Rank · Chicago, IL</div></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"The SNAP store locator alone is worth everything. Found a store 2 blocks away I never knew accepted EBT. The pantry scanner is genuinely magical — it just works."</p>
+      <div class="t-author">
+        <div class="t-av" style="background:rgba(0,255,122,.1);border-color:rgba(0,255,122,.25)">✅</div>
+        <div><div class="t-name">Destiny R.</div><div class="t-detail">Soul Kitchen</div><div class="t-snap-tag">SNAP Verified</div></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"As someone who grew up watching anime, having these characters guide me through recipes is unreal. Sage's vegan section changed how I eat. The design is absolutely stunning."</p>
+      <div class="t-author">
+        <div class="t-av" style="background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.25)">🏛️</div>
+        <div><div class="t-name">Yuki N.</div><div class="t-detail">Phantom Rank · Los Angeles, CA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="fade-up" style="text-align:center">
+    <span class="sec-label">FAQ</span>
+    <h2 class="sec-title">Got Questions?<br>We Got Answers.</h2>
+    <p class="sec-sub" style="margin:0 auto 48px">Everything you need to know before you start cooking.</p>
+  </div>
+  <div class="faq-list fade-up">
+    <div class="faq-item">
+      <div class="faq-q">How does SNAP/EBT free access actually work? <span class="faq-arrow">⌄</span></div>
+      <div class="faq-a"><div class="faq-a-inner">We partner with a secure benefits verification service to confirm your SNAP enrollment — <strong>we never ask for your EBT card number.</strong> Once verified, your account is upgraded to Flame Rank at no cost for as long as you're enrolled. Verification renews annually. If you don't have SNAP benefits but are in financial hardship, you can also self-attest using our free hardship waiver form.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my camera or pantry data stored on your servers? <span class="faq-arrow">⌄</span></div>
+      <div class="faq-a"><div class="faq-a-inner"><strong>No.</strong> Camera images are processed in memory during the scan and immediately discarded — they are never uploaded or stored. Location data used for the SNAP store locator is also processed in real-time and never retained. We collect only what's necessary to provide the service. You can review our full data practices in the Privacy Policy.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use FrameFeast on the web without downloading an app? <span class="faq-arrow">⌄</span></div>
+      <div class="faq-a"><div class="faq-a-inner"><strong>Yes — that's exactly where we're starting.</strong> The FrameFeast web app is launching first and supports all core features including the pantry scanner (via your browser's camera), the SNAP store locator, the full recipe library, and your XP progress. The iOS and Android apps are in development and will arrive later this year.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does the XP and ranking system work? <span class="faq-arrow">⌄</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Every recipe you complete awards XP based on difficulty, cook time, and bonus objectives. Accumulating XP increases your level and unlocks new characters, badges, and recipe packs. <strong>Daily challenges</strong> offer bonus XP and streak rewards. Badges range from Common to Legendary rarity. Your rank is displayed on your profile and the global leaderboard — anonymous by default, opt-in for public visibility.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What makes FrameFeast different from other recipe apps? <span class="faq-arrow">⌄</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Most recipe apps are built for people who already have everything. FrameFeast is built around the reality of <strong>limited budgets, pantry constraints, and SNAP/EBT access</strong> — with the soul of an anime game layered on top. The combination of AI pantry scanning, real USDA SNAP store data, gamification, and original character-led storytelling doesn't exist anywhere else. This is the only app where cooking feels like leveling up.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / EARLY ACCESS -->
+<section class="cta-sec" id="early-access">
+  <span class="sec-label" style="display:block">Early Access</span>
+  <h2 class="sec-title">Ready to Level Up<br>Your Kitchen?</h2>
+  <p class="sec-sub">Join the waitlist and be first to unlock FrameFeast. Early access members get <strong style="color:var(--ember)">Flame Rank free for 3 months.</strong></p>
+  <div class="email-form">
+    <input class="email-input" type="email" placeholder="Enter your email address" id="emailInput">
+    <button class="btn btn-md btn-primary" onclick="handleSignup()">Join Waitlist 🔥</button>
+  </div>
+  <p id="signupMsg" style="font-size:.82rem;min-height:20px;margin-bottom:16px"></p>
+  <div class="store-row">
+    <a href="#" class="store-btn"><div class="si">🍎</div><div><small>Coming Soon</small><span>App Store</span></div></a>
+    <a href="#" class="store-btn"><div class="si">▶</div><div><small>Coming Soon</small><span>Google Play</span></div></a>
+    <a href="#" class="store-btn"><div class="si">🌐</div><div><small>Launching Now</small><span>Web App</span></div></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <a href="#" class="logo" style="margin-bottom:10px;display:inline-flex">Frame<em>Feast</em><sup>™</sup></a>
+      <p>Anime-inspired. AI-powered. Budget-friendly. Built for every kitchen — especially yours.</p>
+      <div class="socials">
+        <a class="soc-btn" href="#" title="Instagram">📸</a>
+        <a class="soc-btn" href="#" title="TikTok">🎵</a>
+        <a class="soc-btn" href="#" title="Twitter/X">✕</a>
+        <a class="soc-btn" href="#" title="YouTube">▶</a>
+        <a class="soc-btn" href="#" title="Discord">💬</a>
+        <a class="soc-btn" href="#" title="Reddit">🔴</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5>Product</h5>
+      <a href="#features">Features</a>
+      <a href="#recipes">Recipes</a>
+      <a href="#characters">Characters</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="ft-col">
+      <h5>Company</h5>
+      <a href="#mission">Our Mission</a>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Press Kit</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="ft-col">
+      <h5>Legal</h5>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">EULA</a>
+      <a href="#">Affiliate Disclosure</a>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2026 Deshawn Christopher Jeter / FrameFeast LLC. All Rights Reserved. FrameFeast™ is a trademark of FrameFeast LLC.</div>
+    <div class="ft-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// MOBILE MENU
+const ham = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+ham.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  const spans = ham.querySelectorAll('span');
+  const isOpen = navLinks.classList.contains('open');
+  spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px,5px)' : '';
+  spans[1].style.opacity = isOpen ? '0' : '';
+  spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    ham.querySelectorAll('span').forEach(s => { s.style.transform=''; s.style.opacity=''; });
+  });
+});
+
+// PRICING TOGGLE
+const toggle = document.getElementById('priceToggle');
+const lblM = document.getElementById('lbl-monthly');
+const lblA = document.getElementById('lbl-annual');
+let annual = false;
+toggle.addEventListener('click', () => {
+  annual = !annual;
+  toggle.classList.toggle('on', annual);
+  lblM.classList.toggle('active', !annual);
+  lblA.classList.toggle('active', annual);
+  document.querySelectorAll('[data-monthly]').forEach(el => {
+    el.textContent = annual ? el.getAttribute('data-annual') : el.getAttribute('data-monthly');
+  });
+  const fa = document.getElementById('flame-annual');
+  const pa = document.getElementById('phantom-annual');
+  const ca = document.getElementById('clan-annual');
+  if(annual){
+    fa.textContent='billed $39.99/year';
+    pa.textContent='billed $79.99/year';
+    ca.textContent='billed $119.99/year';
+  } else {
+    fa.textContent='or $39.99/year';
+    pa.textContent='or $79.99/year';
+    ca.textContent='or $119.99/year';
+  }
+});
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+
+// SCROLL ANIMATIONS
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// EMAIL SIGNUP
+function handleSignup() {
+  const inp = document.getElementById('emailInput');
+  const msg = document.getElementById('signupMsg');
+  const v = inp.value.trim();
+  if(!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){
+    msg.style.color='var(--blade-c)';
+    msg.textContent='⚠ Please enter a valid email address.';
+    return;
+  }
+  msg.style.color='var(--success)';
+  msg.textContent='🎮 You\'re on the list! Check your inbox for early access info.';
+  inp.value='';
+  inp.disabled=true;
+  setTimeout(()=>{ inp.disabled=false; },4000);
+}
+document.getElementById('emailInput').addEventListener('keydown', e => {
+  if(e.key==='Enter') handleSignup();
+});
+
+// RECIPE CARD BUTTONS
+document.querySelectorAll('.rc-cook-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const orig = btn.textContent;
+    btn.textContent = '🔒 Sign up to unlock';
+    btn.style.color = 'var(--ember)';
+    setTimeout(()=>{ btn.textContent=orig; btn.style.color=''; }, 2500);
+  });
+});
+
+// COUNTER ANIMATION
+function animateCounter(el, target, suffix='') {
+  let start = 0;
+  const isK = target >= 1000;
+  const display = isK ? Math.round(target/1000) + 'K+' : target + (suffix||'');
+  const increment = Math.ceil(target / 40);
+  const timer = setInterval(()=>{
+    start += increment;
+    if(start >= target){
+      el.textContent = display;
+      clearInterval(timer);
+    } else {
+      el.textContent = isK ? Math.round(start/1000)+'K+' : start+(suffix||'');
+    }
+  }, 40);
+}
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const nums = e.target.querySelectorAll('.stat-num');
+      const values = [200,5,50000,5];
+      const suffixes = ['+','','',''];
+      nums.forEach((n,i) => {
+        if(i===3){ n.textContent='$5'; return; }
+        if(i===1){ n.textContent='5'; return; }
+        animateCounter(n, values[i], suffixes[i]);
+      });
+      statObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+const statsBand = document.querySelector('.stats-band');
+if(statsBand) statObserver.observe(statsBand);
+</script>
+</body>
+</html>
