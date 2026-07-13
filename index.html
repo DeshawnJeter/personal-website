@@ -658,8 +658,6 @@ function drawSky(s,t){
   c.quadraticCurveTo(16,-118,12,-104); c.lineTo(11,-70); c.lineTo(16,-96); c.lineTo(22,-92); c.lineTo(15,-56); c.lineTo(13,0);
   c.closePath(); c.fill();
   c.beginPath(); c.moveTo(-12,-58); c.quadraticCurveTo(-31,-30+Math.sin(t*.002)*4,-23,-6); c.lineTo(-13,-10); c.closePath(); c.fill();
-  c.strokeStyle='rgba(198,166,100,.55)'; c.lineWidth=1.1;
-  c.beginPath(); c.moveTo(9,-124); c.quadraticCurveTo(15,-116,12,-104); c.lineTo(13,-2); c.stroke();
   c.restore();
 
   c.save(); c.globalCompositeOperation='screen';
