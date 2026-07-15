@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-violet: var(--violet);
+  --color-cyan: var(--cyan);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-code);
+  --font-heading: var(--font-display);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-1: var(--gold);
+  --color-chart-2: var(--violet);
+  --color-chart-3: var(--cyan);
+  --color-chart-4: var(--amber);
+  --color-chart-5: var(--crimson);
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2.2);
+
+  /* Typography scale — fluid, luxurious spacing */
+  --text-hero: clamp(2.75rem, 3rem + 3.5vw, 6.75rem);
+  --text-display: clamp(2.25rem, 2rem + 2.5vw, 4.25rem);
+  --text-heading: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --text-subheading: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --text-body: 1.03125rem;
+  --text-caption: 0.6875rem;
+  --text-code: 0.875rem;
+}
+
+:root {
+  /* ===== obsidian / midnight blue / chrome / antique gold (default, dark) ===== */
+  --void: #04070e;
+  --ink: #080d1a;
+  --navy: #0d1526;
+  --slate: #141c2e;
+  --silver: #c9cfda;
+  --chrome: #e9edf3;
+  --crimson: #8e1b2e;
+  --violet: #6d4aff;
+  --gold: #c6a664;
+  --cyan: #4fd8e8;
+  --amber: #e8b76b;
+  --emerald: #4f9d6f;
+
+  --background: var(--void);
+  --foreground: #edeff4;
+  --card: var(--navy);
+  --card-foreground: #edeff4;
+  --popover: var(--ink);
+  --popover-foreground: #edeff4;
+  --primary: var(--violet);
+  --primary-foreground: #ffffff;
+  --secondary: var(--slate);
+  --secondary-foreground: var(--chrome);
+  --muted: var(--slate);
+  --muted-foreground: var(--silver);
+  --accent: var(--gold);
+  --accent-foreground: var(--void);
+  --success: var(--emerald);
+  --success-foreground: #f2fff8;
+  --warning: var(--amber);
+  --warning-foreground: var(--void);
+  --destructive: var(--crimson);
+  --destructive-foreground: #fff2f3;
+  --border: rgba(201, 207, 218, 0.16);
+  --input: rgba(201, 207, 218, 0.22);
+  --ring: var(--cyan);
+  --radius: 0.625rem;
+
+  --sidebar: var(--ink);
+  --sidebar-foreground: #edeff4;
+  --sidebar-primary: var(--violet);
+  --sidebar-primary-foreground: #fff;
+  --sidebar-accent: var(--slate);
+  --sidebar-accent-foreground: var(--chrome);
+  --sidebar-border: rgba(201, 207, 218, 0.16);
+  --sidebar-ring: var(--cyan);
+
+  --font-body: var(--font-sora), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display-family: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
+  --font-code-family: var(--font-jbmono), ui-monospace, Menlo, monospace;
+}
+
+/* Reassign display/code so @theme inline can reference the loaded fonts */
+:root {
+  --font-display: var(--font-display-family);
+  --font-code: var(--font-code-family);
+}
+
+.light {
+  color-scheme: light;
+  --background: #f6f2e9;
+  --foreground: #14181f;
+  --card: #ffffff;
+  --card-foreground: #14181f;
+  --popover: #ffffff;
+  --popover-foreground: #14181f;
+  --primary: #5734d9;
+  --primary-foreground: #ffffff;
+  --secondary: #ece5d3;
+  --secondary-foreground: #14181f;
+  --muted: #ece5d3;
+  --muted-foreground: #5a5648;
+  --accent: #8a6a2e;
+  --accent-foreground: #ffffff;
+  --success: #2f7d53;
+  --success-foreground: #ffffff;
+  --warning: #8a5c14;
+  --warning-foreground: #ffffff;
+  --destructive: #7a1626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(20, 24, 31, 0.14);
+  --input: rgba(20, 24, 31, 0.2);
+  --ring: #29707a;
+
+  --sidebar: #efe9db;
+  --sidebar-foreground: #14181f;
+  --sidebar-primary: #5734d9;
+  --sidebar-primary-foreground: #fff;
+  --sidebar-accent: #ece5d3;
+  --sidebar-accent-foreground: #14181f;
+  --sidebar-border: rgba(20, 24, 31, 0.14);
+  --sidebar-ring: #29707a;
+}
+
+/* High contrast: honor OS-level forced-colors / prefers-contrast rather than
+   a second manual toggle, so it responds to the setting users actually have. */
+@media (prefers-contrast: more) {
+  :root {
+    --border: rgba(201, 207, 218, 0.4);
+    --muted-foreground: #e9edf3;
+    --ring: #ffffff;
+  }
+  .light {
+    --border: rgba(20, 24, 31, 0.35);
+    --muted-foreground: #14181f;
+    --ring: #14181f;
+  }
+}
+
+@media (forced-colors: active) {
+  .btn, button, a[class*="btn"] {
+    forced-color-adjust: none;
+    border: 1px solid ButtonText;
+    color: ButtonText;
+  }
+  :focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  :root {
+    --background: #ffffff;
+    --foreground: #14181f;
+    --muted-foreground: #3a3a3a;
+    --border: rgba(20, 24, 31, 0.2);
+    --accent: #8a6a2e;
+  }
+  .grain, .cursor-dot {
+    display: none !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--violet);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+}
+
+@layer utilities {
+  .cursor-dot--active {
+    transform: scale(3.4) !important;
+    background: var(--gold) !important;
+  }
+
+  .grain {
+    position: fixed;
+    inset: -50%;
+    z-index: 69;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 700ms steps(3) infinite;
+  }
+  @keyframes grain {
+    0% { transform: translate(0, 0); }
+    33% { transform: translate(-4%, 3%); }
+    66% { transform: translate(3%, -3%); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .text-hero { font-size: var(--text-hero); }
+  .text-display { font-size: var(--text-display); }
+  .text-heading { font-size: var(--text-heading); }
+  .text-subheading { font-size: var(--text-subheading); }
+  .text-body { font-size: var(--text-body); }
+  .text-caption { font-size: var(--text-caption); }
+  .text-code { font-size: var(--text-code); font-family: var(--font-code); }
+}

@@ -1,0 +1,101 @@
+"use client";
+
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import { CtaLink } from "@/components/ui/cta-link";
+import { Container } from "@/components/ui/container";
+
+const Starfield = dynamic(
+  () => import("@/components/motion/starfield").then((m) => m.Starfield),
+  { ssr: false }
+);
+
+const lineVariants = {
+  hidden: { y: "110%" },
+  visible: { y: "0%" },
+};
+
+export function Hero() {
+  return (
+    <section
+      id="hero"
+      aria-label="Introduction"
+      className="relative flex min-h-[100svh] items-center overflow-hidden pt-32 pb-20"
+    >
+      <Starfield className="absolute inset-0 h-full w-full" />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[32vh] bg-gradient-to-b from-transparent to-background"
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-[2] text-center">
+        <p className="mx-auto mb-6 flex w-fit items-center gap-3 font-mono text-[11px] uppercase tracking-[0.34em] text-accent">
+          Creative technologist &amp; software engineer
+        </p>
+
+        <h1 className="mx-auto max-w-4xl text-hero leading-[1.02] text-foreground">
+          <span className="block overflow-hidden">
+            <motion.span
+              className="block"
+              initial="hidden"
+              animate="visible"
+              variants={lineVariants}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Where imagination
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden">
+            <motion.span
+              className="block italic text-accent"
+              initial="hidden"
+              animate="visible"
+              variants={lineVariants}
+              transition={{ duration: 0.8, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            >
+              becomes architecture.
+            </motion.span>
+          </span>
+        </h1>
+
+        {/* Rendered immediately (no JS-driven fade) — this is the LCP
+            candidate, and gating its paint behind Framer Motion state
+            costs seconds under CPU-throttled conditions. */}
+        <p className="mx-auto mt-8 max-w-[48ch] text-subheading text-muted-foreground">
+          I don&rsquo;t just build software — I build experiences people remember.
+          This site is less a list of projects and more an answer to why I build
+          at all.
+        </p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-3.5"
+        >
+          <CtaLink href="#story" variant="solid">
+            Explore my story
+          </CtaLink>
+          <CtaLink href="#work" variant="outline">
+            Current project
+          </CtaLink>
+          <CtaLink href="/resume" variant="gold">
+            View resume
+          </CtaLink>
+        </motion.div>
+      </Container>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="absolute inset-x-0 bottom-8 z-[2] flex justify-center font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+      >
+        <span className="flex flex-col items-center gap-2">
+          Scroll
+          <span className="h-8 w-px bg-gradient-to-b from-accent to-transparent" aria-hidden="true" />
+        </span>
+      </motion.div>
+    </section>
+  );
+}
