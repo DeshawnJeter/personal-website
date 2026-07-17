@@ -13,14 +13,14 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#04070E",
+          background: "#0D0D0D",
         }}
       >
         <div
           style={{
             width: 14,
             height: 14,
-            border: "2px solid #C6A664",
+            border: "2px solid #D4AF37",
             transform: "rotate(45deg)",
           }}
         />

@@ -1,12 +1,18 @@
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/motion/reveal";
+import { StainedGlass } from "@/components/motion/stained-glass";
 import { storyChapters } from "@/lib/content";
 
 export function Story() {
   return (
-    <section id="story" aria-labelledby="story-heading" className="py-24 sm:py-32">
-      <Container>
+    <section
+      id="story"
+      aria-labelledby="story-heading"
+      className="relative overflow-hidden py-24 sm:py-32"
+    >
+      <StainedGlass className="pointer-events-none absolute -right-16 top-8 hidden h-[420px] w-[260px] opacity-30 lg:block" />
+      <Container className="relative">
         <Reveal>
           <Eyebrow>Five moments that built me</Eyebrow>
         </Reveal>

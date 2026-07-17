@@ -8,7 +8,7 @@ export const site = {
   tagline: "Where imagination becomes architecture.",
   description:
     "Creative technologist, systems thinker, builder. I don't just build software — I build experiences people remember.",
-  email: "deshawn.jeter@pursuit.org",
+  email: "jeterdeshawn@gmail.com",
   url: "https://deshawnjeter.dev",
 };
 

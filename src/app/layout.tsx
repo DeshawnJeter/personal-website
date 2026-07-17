@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Sora, JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/content";
 import { SiteChrome } from "@/components/site-chrome";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });
 
-const sora = Sora({
+const inter = Inter({
   variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "600"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#04070e",
+  themeColor: "#0b0a14",
 };
 
 export default function RootLayout({
@@ -70,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${sora.variable} ${jbMono.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${jbMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">

@@ -16,7 +16,7 @@ export default function OpengraphImage() {
           justifyContent: "center",
           padding: "80px",
           background:
-            "linear-gradient(135deg, #04070E 0%, #0D1526 55%, #04070E 100%)",
+            "linear-gradient(135deg, #1A0B1A 0%, #0B0A1A 55%, #0D0D0D 100%)",
           color: "#EDEFF4",
           fontFamily: "serif",
         }}
@@ -29,7 +29,7 @@ export default function OpengraphImage() {
             fontSize: 20,
             letterSpacing: 6,
             textTransform: "uppercase",
-            color: "#C6A664",
+            color: "#D4AF37",
             marginBottom: 28,
           }}
         >
@@ -37,7 +37,7 @@ export default function OpengraphImage() {
             style={{
               width: 14,
               height: 14,
-              border: "2px solid #C6A664",
+              border: "2px solid #D4AF37",
               transform: "rotate(45deg)",
             }}
           />
@@ -46,7 +46,7 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", fontSize: 76, lineHeight: 1.1 }}>
           Where imagination
         </div>
-        <div style={{ display: "flex", fontSize: 76, lineHeight: 1.1, color: "#C6A664", fontStyle: "italic" }}>
+        <div style={{ display: "flex", fontSize: 76, lineHeight: 1.1, color: "#D4AF37", fontStyle: "italic" }}>
           becomes architecture.
         </div>
         <div style={{ display: "flex", fontSize: 28, marginTop: 36, color: "#C9CFDA" }}>

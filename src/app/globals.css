@@ -68,21 +68,30 @@
 }
 
 :root {
-  /* ===== obsidian / midnight blue / chrome / antique gold (default, dark) ===== */
-  --void: #04070e;
-  --ink: #080d1a;
-  --navy: #0d1526;
-  --slate: #141c2e;
+  /* ===== anime-gothic cathedral: deep purple / midnight blue / obsidian, neon violet + celestial gold ===== */
+  --obsidian: #0d0d0d;
+  --midnight: #0b0a1a;
+  --deep-purple: #1a0b1a;
+  --void: #0b0a14;
+  --ink: #120a1c;
+  --navy: #1c1128;
+  --slate: #241833;
   --silver: #c9cfda;
   --chrome: #e9edf3;
   --crimson: #8e1b2e;
-  --violet: #6d4aff;
-  --gold: #c6a664;
+  --violet: #b300b3;
+  --gold: #d4af37;
   --cyan: #4fd8e8;
   --amber: #e8b76b;
   --emerald: #4f9d6f;
 
   --background: var(--void);
+  --background-gradient: linear-gradient(
+    165deg,
+    var(--deep-purple) 0%,
+    var(--midnight) 48%,
+    var(--obsidian) 100%
+  );
   --foreground: #edeff4;
   --card: var(--navy);
   --card-foreground: #edeff4;
@@ -130,6 +139,7 @@
 .light {
   color-scheme: light;
   --background: #f6f2e9;
+  --background-gradient: none;
   --foreground: #14181f;
   --card: #ffffff;
   --card-foreground: #14181f;
@@ -198,6 +208,14 @@
   }
 }
 
+/* Custom gothic cursor — desktop pointers only. Falls back to the native
+   cursor automatically wherever the browser can't load/render the image. */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    cursor: url("/cursors/gothic-cross.svg") 14 10, auto;
+  }
+}
+
 @media print {
   :root {
     --background: #ffffff;
@@ -220,9 +238,15 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: var(--background-gradient), var(--background);
+    background-attachment: fixed;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+  }
+  .dark body {
+    background: var(--background-gradient), var(--background);
+    background-attachment: fixed;
   }
   ::selection {
     background: var(--violet);
@@ -237,6 +261,9 @@
     font-weight: 300;
     letter-spacing: -0.01em;
     line-height: 1.05;
+  }
+  .dark h1, .dark h2, .dark h3, .dark h4 {
+    text-shadow: 0 0 28px color-mix(in oklab, var(--violet) 22%, transparent);
   }
 }
 
