@@ -28,7 +28,7 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-32 pb-20"
     >
       <Starfield className="absolute inset-0 h-full w-full" />
-      <CathedralArches className="pointer-events-none absolute inset-x-0 top-0 h-[60vh] w-full opacity-60" />
+      <CathedralArches className="pointer-events-none absolute inset-x-0 top-0 h-[42vh] w-full opacity-70" />
       <HolographicJester className="absolute right-[4%] top-[14%] hidden h-56 w-48 md:block lg:right-[8%] lg:h-64 lg:w-56" />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[32vh] bg-gradient-to-b from-transparent to-background"

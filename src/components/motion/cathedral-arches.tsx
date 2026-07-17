@@ -24,11 +24,12 @@ export function CathedralArches({ className }: { className?: string }) {
     >
       <defs>
         <linearGradient id="rib-fade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.5" />
+          <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.4" />
+          <stop offset="35%" stopColor="var(--gold)" stopOpacity="0.14" />
           <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
         </linearGradient>
       </defs>
-      <g fill="none" stroke="url(#rib-fade)" strokeWidth="1">
+      <g fill="none" stroke="url(#rib-fade)" strokeWidth="0.75">
         {ribs.map((d) => (
           <path key={d} d={d} />
         ))}
