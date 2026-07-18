@@ -30,8 +30,6 @@ type HoverState = "default" | "link" | "button" | "interactive";
 type EngineState =
   HoverState | "dragging" | "typing" | "loading" | "success" | "error";
 
-const TRAIL_LENGTH = 10;
-
 function resolveHoverState(target: EventTarget | null): HoverState {
   if (!(target instanceof HTMLElement)) return "default";
   if (target.closest("a")) return "link";
@@ -65,8 +63,6 @@ export function CursorEngine() {
   const springX = useSpring(x, { stiffness: 400, damping: 32, mass: 0.6 });
   const springY = useSpring(y, { stiffness: 400, damping: 32, mass: 0.6 });
 
-  const trailRef = useRef<HTMLCanvasElement>(null);
-  const trailPoints = useRef<{ x: number; y: number }[]>([]);
   const rippleId = useRef(0);
   const transientTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -103,10 +99,6 @@ export function CursorEngine() {
     const onMove = (event: PointerEvent) => {
       x.set(event.clientX);
       y.set(event.clientY);
-      trailPoints.current.push({ x: event.clientX, y: event.clientY });
-      if (trailPoints.current.length > TRAIL_LENGTH) {
-        trailPoints.current.shift();
-      }
     };
     const onOver = (event: PointerEvent) => {
       setHoverState(resolveHoverState(event.target));
@@ -155,47 +147,6 @@ export function CursorEngine() {
     return () => window.removeEventListener(CURSOR_STATE_EVENT, onStateEvent);
   }, [ready, enabled]);
 
-  // Particle trail canvas — resize-aware, rAF-driven, matching starfield.tsx.
-  useEffect(() => {
-    if (!ready || !enabled) return;
-    const canvas = trailRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let raf = 0;
-
-    const resize = () => {
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      const points = trailPoints.current;
-      points.forEach((point, index) => {
-        const alpha = ((index + 1) / points.length) * 0.28;
-        ctx.beginPath();
-        ctx.fillStyle = `color-mix(in oklab, var(--violet) ${Math.round(
-          alpha * 100,
-        )}%, transparent)`;
-        ctx.arc(point.x, point.y, 2.2, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      raf = requestAnimationFrame(draw);
-    };
-    raf = requestAnimationFrame(draw);
-
-    return () => {
-      window.removeEventListener("resize", resize);
-      cancelAnimationFrame(raf);
-    };
-  }, [ready, enabled]);
-
   if (!ready || !enabled) return null;
 
   const activeState: EngineState =
@@ -207,8 +158,6 @@ export function CursorEngine() {
       className="pointer-events-none fixed inset-0 z-[70]"
       aria-hidden="true"
     >
-      <canvas ref={trailRef} className="fixed inset-0" />
-
       <AnimatePresence>
         {ripples.map((ripple) => (
           <motion.div
