@@ -34,8 +34,14 @@ export function CtaLink({
   const magneticRef = useMagneticHover<HTMLAnchorElement>();
 
   if (isExternal) {
+    const isMailto = href.startsWith("mailto:");
     return (
-      <a ref={magneticRef} href={href} className={classes}>
+      <a
+        ref={magneticRef}
+        href={href}
+        className={classes}
+        {...(isMailto ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+      >
         {children}
       </a>
     );

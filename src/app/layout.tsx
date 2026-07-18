@@ -62,6 +62,15 @@ export const viewport = {
   themeColor: "#0b0a14",
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  url: site.url,
+  sameAs: [site.github, site.linkedin],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,6 +83,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <a
           href="#main"
           className="focus:bg-primary focus:text-primary-foreground sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:px-4 focus:py-2"

@@ -30,14 +30,24 @@ export default function ResumePage() {
         <p className="text-subheading text-muted-foreground mt-3 max-w-[60ch]">
           {resume.summary}
         </p>
-        {site.email && (
+        <div className="mt-3 flex gap-5 font-mono text-[11px] tracking-[0.2em] uppercase">
           <a
-            href={`mailto:${site.email}`}
-            className="text-accent mt-3 inline-block underline-offset-4 hover:underline"
+            href={site.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent underline-offset-4 hover:underline"
           >
-            {site.email}
+            GitHub
           </a>
-        )}
+          <a
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent underline-offset-4 hover:underline"
+          >
+            LinkedIn
+          </a>
+        </div>
 
         <section className="mt-12" aria-labelledby="resume-strengths">
           <h2 id="resume-strengths" className="text-heading text-foreground">

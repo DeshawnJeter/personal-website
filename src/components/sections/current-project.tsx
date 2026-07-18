@@ -81,12 +81,6 @@ export function CurrentProject() {
                 >
                   Live preview ↗
                 </a>
-                <a
-                  href={currentProject.links.github}
-                  className="text-muted-foreground hover:text-accent underline-offset-4 hover:underline"
-                >
-                  GitHub
-                </a>
               </div>
             </Reveal>
           </div>

@@ -9,10 +9,11 @@ export const site = {
   description:
     "Creative technologist, systems thinker, builder. I don't just build software — I build experiences people remember.",
   // Intentionally blank — no contact email is published in this repo.
-  // Fill in a real address here to re-enable the mailto affordances in
-  // contact.tsx, site-footer.tsx, and resume/page.tsx.
+  // The working contact method is LinkedIn (see `linkedin` below).
   email: "",
   url: "https://deshawnjeter.dev",
+  github: "https://github.com/DeshawnJeter",
+  linkedin: "https://www.linkedin.com/in/deshawn-jeter-3ab331419",
 };
 
 // The eight narrative chapters that structure the homepage, in reading
@@ -272,7 +273,6 @@ export const currentProject = {
   stack: ["HTML", "CSS", "JavaScript", "Responsive design"],
   links: {
     preview: "/framefeast",
-    github: "#",
   },
 };
 

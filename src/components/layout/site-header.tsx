@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { nav, primaryNav } from "@/lib/content";
+import { nav, primaryNav, site } from "@/lib/content";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { CursorToggle } from "@/components/layout/cursor-toggle";
 
@@ -55,6 +55,22 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
+          <a
+            href={site.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground/70 hover:text-accent hidden font-mono text-[11px] tracking-[0.22em] uppercase transition-colors sm:inline-block"
+          >
+            GitHub
+          </a>
+          <a
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground/70 hover:text-accent hidden font-mono text-[11px] tracking-[0.22em] uppercase transition-colors sm:inline-block"
+          >
+            LinkedIn
+          </a>
           <Link
             href="/resume"
             className="border-accent/60 text-accent hover:bg-accent/10 hidden rounded-sm border px-4 py-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-colors sm:inline-block"
@@ -105,6 +121,26 @@ export function SiteHeader() {
               >
                 Resume
               </Link>
+              <div className="mt-1 flex gap-1">
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="text-foreground/80 hover:bg-secondary hover:text-accent flex-1 rounded-md px-2 py-2.5 text-center font-mono text-xs tracking-[0.2em] uppercase transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="text-foreground/80 hover:bg-secondary hover:text-accent flex-1 rounded-md px-2 py-2.5 text-center font-mono text-xs tracking-[0.2em] uppercase transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </motion.nav>
         )}
