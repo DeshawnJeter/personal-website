@@ -9,12 +9,14 @@ export function SiteFooter() {
           © {new Date().getFullYear()} {site.name}
         </p>
         <div className="flex items-center gap-6 font-mono text-[11px] tracking-[0.2em] uppercase">
-          <a
-            href={`mailto:${site.email}`}
-            className="hover:text-accent transition-colors"
-          >
-            Email
-          </a>
+          {site.email && (
+            <a
+              href={`mailto:${site.email}`}
+              className="hover:text-accent transition-colors"
+            >
+              Email
+            </a>
+          )}
           <Link href="/resume" className="hover:text-accent transition-colors">
             Resume
           </Link>

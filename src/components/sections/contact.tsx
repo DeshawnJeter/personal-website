@@ -8,10 +8,17 @@ import { chapters, contact, site } from "@/lib/content";
 import { triggerCursorState } from "@/lib/cursor-events";
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sent" | "unavailable">("idle");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!site.email) {
+      triggerCursorState("error", 1200);
+      setStatus("unavailable");
+      return;
+    }
+
     triggerCursorState("loading", 500);
     const form = new FormData(event.currentTarget);
     const name = String(form.get("name") ?? "");
@@ -23,7 +30,7 @@ export function Contact() {
     );
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus("sent");
     triggerCursorState("success", 1400);
   };
 
@@ -62,14 +69,16 @@ export function Contact() {
               {contact.lede}
             </p>
           </Reveal>
-          <Reveal delay={0.12}>
-            <a
-              href={`mailto:${site.email}`}
-              className="font-display text-accent mt-8 inline-block text-2xl underline-offset-8 hover:underline"
-            >
-              {site.email}
-            </a>
-          </Reveal>
+          {site.email && (
+            <Reveal delay={0.12}>
+              <a
+                href={`mailto:${site.email}`}
+                className="font-display text-accent mt-8 inline-block text-2xl underline-offset-8 hover:underline"
+              >
+                {site.email}
+              </a>
+            </Reveal>
+          )}
         </div>
 
         <Reveal delay={0.1}>
@@ -133,9 +142,13 @@ export function Contact() {
               </button>
               <p
                 role="status"
-                className="text-success min-h-[1.25em] text-center text-sm"
+                className={`min-h-[1.25em] text-center text-sm ${
+                  status === "unavailable" ? "text-warning" : "text-success"
+                }`}
               >
-                {sent ? "Opening your email client…" : ""}
+                {status === "sent" && "Opening your email client…"}
+                {status === "unavailable" &&
+                  "Contact isn't wired up yet — check back soon."}
               </p>
             </div>
           </form>

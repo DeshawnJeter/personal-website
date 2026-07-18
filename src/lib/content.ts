@@ -8,7 +8,10 @@ export const site = {
   tagline: "Where imagination becomes architecture.",
   description:
     "Creative technologist, systems thinker, builder. I don't just build software — I build experiences people remember.",
-  email: "jeterdeshawn@gmail.com",
+  // Intentionally blank — no contact email is published in this repo.
+  // Fill in a real address here to re-enable the mailto affordances in
+  // contact.tsx, site-footer.tsx, and resume/page.tsx.
+  email: "",
   url: "https://deshawnjeter.dev",
 };
 
@@ -370,7 +373,7 @@ export const resume = {
 export const contact = {
   eyebrow: "Contact",
   title: "Come in. The door is unlocked.",
-  lede: "The chapters end here — but the story doesn't. Tell me what you're building, and let's write the next one together. Send a message here, or reach out directly by email.",
+  lede: "The chapters end here — but the story doesn't. Tell me what you're building, and let's write the next one together.",
 };
 
 // Copy for the holographic jester guide (src/components/motion/jester-guide.tsx).

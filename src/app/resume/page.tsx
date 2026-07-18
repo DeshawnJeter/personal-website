@@ -30,12 +30,14 @@ export default function ResumePage() {
         <p className="text-subheading text-muted-foreground mt-3 max-w-[60ch]">
           {resume.summary}
         </p>
-        <a
-          href={`mailto:${site.email}`}
-          className="text-accent mt-3 inline-block underline-offset-4 hover:underline"
-        >
-          {site.email}
-        </a>
+        {site.email && (
+          <a
+            href={`mailto:${site.email}`}
+            className="text-accent mt-3 inline-block underline-offset-4 hover:underline"
+          >
+            {site.email}
+          </a>
+        )}
 
         <section className="mt-12" aria-labelledby="resume-strengths">
           <h2 id="resume-strengths" className="text-heading text-foreground">
