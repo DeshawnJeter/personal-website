@@ -94,10 +94,10 @@ export function CurrentProject() {
           <Reveal delay={0.1}>
             <div className="border-border bg-background/40 relative overflow-hidden rounded-2xl border">
               <Image
-                src="/images/framefeast-characters.svg"
-                alt="Illustrated character art from the FrameFeast cooking app"
-                width={640}
-                height={480}
+                src="/images/framefeast-characters.png"
+                alt="The five original FrameFeast guide characters — Chef Phantom, Ember, Dr. Frost, Sage, and Blade — from the app's 'Choose Your Guide' screen"
+                width={1480}
+                height={580}
                 className="h-full w-full object-cover"
               />
             </div>

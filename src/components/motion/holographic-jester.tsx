@@ -21,7 +21,7 @@ export function HolographicJester({ className }: { className?: string }) {
   const flicker = reduceMotion
     ? undefined
     : {
-        opacity: [0.38, 0.56, 0.4, 0.5, 0.38],
+        opacity: [0.96, 1, 0.97, 1, 0.96],
       };
 
   return (
