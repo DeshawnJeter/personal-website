@@ -8,17 +8,17 @@ site — see `README.md` for the stack and structure overview.
 ## Content lives in one place
 
 `src/lib/content.ts` is the single source of truth for every real sentence on
-the site (story copy, chapter metadata, jester lines, resume data, lore
-text). Don't hardcode copy in components — add or edit it in `content.ts`
-and import it. The `chapters` array there (numeral/id/label) drives the
-homepage section order, nav, side rail, and the jester guide's per-chapter
-captions; keep it as the one place chapter identity is defined.
+the site (story copy, chapter metadata, resume data, lore text). Don't
+hardcode copy in components — add or edit it in `content.ts` and import it.
+The `chapters` array there (numeral/id/label) drives the homepage section
+order, nav, and side rail; keep it as the one place chapter identity is
+defined.
 
 ## Where things live
 
 - `src/components/sections/` — one component per homepage chapter/section.
 - `src/components/motion/` — decorative/animated pieces (starfield, fog,
-  raven, cursor engine, jester guide). These should degrade gracefully:
+  raven, cursor engine). These should degrade gracefully:
   check `prefers-reduced-motion` via `useReducedMotion()` (Framer Motion) or
   `window.matchMedia("(prefers-reduced-motion: reduce)")`, and gate anything
   cursor-following behind `(hover: hover) and (pointer: fine)` so touch/
@@ -43,8 +43,8 @@ captions; keep it as the one place chapter identity is defined.
 `src/components/site-chrome.tsx` mounts everything global (header, side
 rail, cursor engine, grain overlay) via `dynamic(..., { ssr: false })` inside
 a `print:hidden` wrapper, since none of it should block hydration or show up
-when printing. The narrative-only pieces (jester guide, fog, ambient raven,
-the Konami easter egg) are additionally gated behind `pathname === "/"` in
+when printing. The narrative-only pieces (fog, ambient raven, the Konami
+easter egg) are additionally gated behind `pathname === "/"` in
 that same file — `/resume` stays clean. If you add a new global decorative
 piece, follow this pattern rather than mounting it directly in a section.
 
