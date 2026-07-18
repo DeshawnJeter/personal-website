@@ -87,7 +87,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.35 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-3.5"
         >
-          <CtaLink href="#story" variant="solid">
+          <CtaLink href="#prologue" variant="solid">
             Explore my story
           </CtaLink>
           <CtaLink href="#work" variant="outline">

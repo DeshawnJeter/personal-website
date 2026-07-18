@@ -12,25 +12,37 @@ export const site = {
   url: "https://deshawnjeter.dev",
 };
 
+// The eight narrative chapters that structure the homepage, in reading
+// order. Every chapter section uses this for its numeral + id + label.
+export type Chapter = {
+  numeral: string;
+  id: string;
+  label: string;
+};
+
+export const chapters: Chapter[] = [
+  { numeral: "I", id: "prologue", label: "Prologue" },
+  { numeral: "II", id: "first-spark", label: "The First Spark" },
+  { numeral: "III", id: "learning-to-build", label: "Learning to Build" },
+  { numeral: "IV", id: "finding-my-people", label: "Finding My People" },
+  { numeral: "V", id: "philosophy", label: "The Philosophy" },
+  { numeral: "VI", id: "engineering", label: "Engineering" },
+  { numeral: "VII", id: "work", label: "The Workshop" },
+  { numeral: "VIII", id: "contact", label: "The Journey Continues" },
+];
+
 // Full section list — used by the side rail (in-page progress) and the mobile menu.
-export const nav = [
-  { href: "/#story", label: "Story" },
-  { href: "/#mind", label: "Thinking" },
-  { href: "/#why-swe", label: "Why Engineering" },
-  { href: "/#philosophy", label: "Philosophy" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#work", label: "Current Project" },
-  { href: "/#inspirations", label: "Inspirations" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#contact", label: "Contact" },
-] as const;
+export const nav = chapters.map((chapter) => ({
+  href: `/#${chapter.id}`,
+  label: chapter.label,
+})) as { href: string; label: string }[];
 
 // A shorter set for the persistent desktop header, so it stays quiet
-// rather than cramming all nine section anchors into one row.
+// rather than cramming all eight chapter anchors into one row.
 export const primaryNav = [
-  { href: "/#story", label: "Story" },
+  { href: "/#prologue", label: "Story" },
   { href: "/#work", label: "Current Project" },
-  { href: "/#experience", label: "Experience" },
+  { href: "/#engineering", label: "Engineering" },
   { href: "/#contact", label: "Contact" },
 ] as const;
 
@@ -56,32 +68,8 @@ export const storyChapters: StoryChapter[] = [
     beat: "Creativity isn't decoration. It's architecture.",
   },
   {
-    id: "question",
-    eyebrow: "II",
-    title: "The question that refused to leave",
-    body: [
-      "Most kids ask what they want to be when they grow up. My brain skipped ahead and asked why any of it matters. Not exactly playground conversation.",
-      "For a while that question was heavy. If nothing arrives with inherent meaning, what's the point? Terrifying — right up until it becomes the most liberating question you'll ever ask.",
-      "Nobody was coming to hand me a script. Good. I never liked spoilers anyway.",
-      "Nietzsche understood it long before computers existed: chaos isn't the enemy, it's raw material. Every obstacle stopped looking like a wall and started looking like a gym. Heavy. Uncomfortable. Exactly what builds strength.",
-    ],
-    beat: "Meaning isn't found. It's built — brick by brick, choice by choice, project by project.",
-  },
-  {
-    id: "family",
-    eyebrow: "III",
-    title: "The family I chose",
-    body: [
-      "People love talking about self-made success. That's adorable. Nobody builds anything worthwhile alone.",
-      "My family isn't only the one I was born into. It's the people who chose me — and the people I chose back. The friends who challenged me. The ones who called me out when I was wrong. The ones who celebrated victories that weren't even theirs.",
-      "They didn't just hand out encouragement. They gave me perspective. Trust. Belonging. The freedom to fail without becoming a failure.",
-      "Growth happens fastest inside communities built on honesty. That's one of the greatest gifts another human can give.",
-    ],
-    beat: "Collaboration beats ego. Every single time.",
-  },
-  {
     id: "keyboard",
-    eyebrow: "IV",
+    eyebrow: "II",
     title: "The keyboard that changed everything",
     body: [
       "At first it looked like someone had spilled alphabet soup across a black screen. Then something clicked. People write words — and those words become software? That's basically magic wearing glasses.",
@@ -93,7 +81,7 @@ export const storyChapters: StoryChapter[] = [
   },
   {
     id: "real-world",
-    eyebrow: "V",
+    eyebrow: "III",
     title: "Building in the real world",
     body: [
       "Long before software became the destination, I spent years solving real problems. Leading installation teams. Terminating cable as a structured cabling technician. Cooking under pressure. Serving on vessels where safety couldn't be optional. Working alongside communities on civic engagement projects.",
@@ -102,6 +90,18 @@ export const storyChapters: StoryChapter[] = [
       "Every role strengthened discipline, adaptability, and leadership in fast-paced environments where the plan meets reality.",
     ],
     beat: "I don't fall in love with titles. I fall in love with building things that help people.",
+  },
+  {
+    id: "family",
+    eyebrow: "IV",
+    title: "The family I chose",
+    body: [
+      "People love talking about self-made success. That's adorable. Nobody builds anything worthwhile alone.",
+      "My family isn't only the one I was born into. It's the people who chose me — and the people I chose back. The friends who challenged me. The ones who called me out when I was wrong. The ones who celebrated victories that weren't even theirs.",
+      "They didn't just hand out encouragement. They gave me perspective. Trust. Belonging. The freedom to fail without becoming a failure.",
+      "Growth happens fastest inside communities built on honesty. That's one of the greatest gifts another human can give.",
+    ],
+    beat: "Collaboration beats ego. Every single time.",
   },
 ];
 
@@ -163,6 +163,12 @@ export const whySoftwareEngineering = {
 export const philosophy = {
   eyebrow: "Engineering philosophy",
   title: "What I build everything on",
+  intro: [
+    "Most kids ask what they want to be when they grow up. My brain skipped ahead and asked why any of it matters. Not exactly playground conversation.",
+    "For a while that question was heavy. If nothing arrives with inherent meaning, what's the point? Terrifying — right up until it becomes the most liberating question you'll ever ask.",
+    "Nobody was coming to hand me a script. Good. I never liked spoilers anyway.",
+    "Nietzsche understood it long before computers existed: chaos isn't the enemy, it's raw material. Every obstacle stopped looking like a wall and started looking like a gym. Heavy. Uncomfortable. Exactly what builds strength.",
+  ],
   tenets: [
     { roman: "i", text: "Creativity is architecture." },
     { roman: "ii", text: "Chaos is raw material." },
@@ -364,5 +370,5 @@ export const resume = {
 export const contact = {
   eyebrow: "Contact",
   title: "Come in. The door is unlocked.",
-  lede: "Tell me what you're building. Send a message here, or reach out directly by email.",
+  lede: "The chapters end here — but the story doesn't. Tell me what you're building, and let's write the next one together. Send a message here, or reach out directly by email.",
 };

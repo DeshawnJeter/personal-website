@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/motion/reveal";
-import { currentProject } from "@/lib/content";
+import { chapters, currentProject } from "@/lib/content";
 
 const journeyGroups: { label: string; items: string[] }[] = [
   { label: "The problem", items: [currentProject.problem] },
@@ -14,20 +14,31 @@ const journeyGroups: { label: string; items: string[] }[] = [
 ];
 
 export function CurrentProject() {
+  const chapter = chapters.find((c) => c.id === "work")!;
+
   return (
     <section
-      id="work"
+      id={chapter.id}
       aria-labelledby="work-heading"
       className="border-border bg-card/20 border-y py-24 sm:py-32"
     >
       <Container>
         <Reveal>
-          <Eyebrow>{currentProject.eyebrow}</Eyebrow>
+          <Eyebrow>Chapter {chapter.numeral}</Eyebrow>
+        </Reveal>
+        <Reveal delay={0.04}>
+          <p className="text-heading text-muted-foreground mt-4 italic">
+            {chapter.label}
+          </p>
         </Reveal>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
             <Reveal>
+              <span className="text-accent font-mono text-[10px] tracking-[0.24em] uppercase">
+                {currentProject.eyebrow}
+              </span>
+              <br />
               <span className="text-warning font-mono text-[10px] tracking-[0.24em] uppercase">
                 In progress — not a finished product
               </span>
