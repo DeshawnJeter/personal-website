@@ -26,10 +26,6 @@ const Fog = dynamic(
   () => import("@/components/motion/fog").then((m) => m.Fog),
   { ssr: false },
 );
-const AmbientRaven = dynamic(
-  () => import("@/components/motion/raven").then((m) => m.Raven),
-  { ssr: false },
-);
 const KonamiEasterEgg = dynamic(
   () =>
     import("@/components/easter-eggs/konami-easter-egg").then(
@@ -40,9 +36,9 @@ const KonamiEasterEgg = dynamic(
 
 export function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  // The cathedral atmosphere (fog, ambient raven, hidden discoveries)
-  // belongs to the narrative homepage — not the print-oriented resume page,
-  // which stays clean and unaffected on screen too.
+  // The cathedral atmosphere (fog, hidden discoveries) belongs to the
+  // narrative homepage — not the print-oriented resume page, which stays
+  // clean and unaffected on screen too.
   const isHomepage = pathname === "/";
 
   return (
@@ -57,7 +53,6 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           {isHomepage && (
             <>
               <Fog />
-              <AmbientRaven mode="ambient" />
               <KonamiEasterEgg />
             </>
           )}

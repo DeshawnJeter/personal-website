@@ -233,8 +233,7 @@
     --accent: #8a6a2e;
   }
   .grain,
-  .fog,
-  .raven-ambient {
+  .fog {
     display: none !important;
   }
 }
@@ -375,27 +374,6 @@
     }
     50% {
       transform: translate(4vw, -5vh);
-    }
-  }
-
-  .raven-ambient > svg {
-    animation: raven-cross 90s linear infinite;
-  }
-  @keyframes raven-cross {
-    0% {
-      transform: translate(-10vw, 0);
-      opacity: 0;
-    }
-    1% {
-      opacity: 0.6;
-    }
-    6% {
-      transform: translate(110vw, -4vh);
-      opacity: 0;
-    }
-    100% {
-      transform: translate(110vw, -4vh);
-      opacity: 0;
     }
   }
 

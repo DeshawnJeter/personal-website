@@ -18,7 +18,7 @@ defined.
 
 - `src/components/sections/` — one component per homepage chapter/section.
 - `src/components/motion/` — decorative/animated pieces (starfield, fog,
-  raven, cursor engine). These should degrade gracefully:
+  cursor engine). These should degrade gracefully:
   check `prefers-reduced-motion` via `useReducedMotion()` (Framer Motion) or
   `window.matchMedia("(prefers-reduced-motion: reduce)")`, and gate anything
   cursor-following behind `(hover: hover) and (pointer: fine)` so touch/
@@ -43,8 +43,8 @@ defined.
 `src/components/site-chrome.tsx` mounts everything global (header, side
 rail, cursor engine, grain overlay) via `dynamic(..., { ssr: false })` inside
 a `print:hidden` wrapper, since none of it should block hydration or show up
-when printing. The narrative-only pieces (fog, ambient raven, the Konami
-easter egg) are additionally gated behind `pathname === "/"` in
+when printing. The narrative-only pieces (fog, the Konami easter egg)
+are additionally gated behind `pathname === "/"` in
 that same file — `/resume` stays clean. If you add a new global decorative
 piece, follow this pattern rather than mounting it directly in a section.
 

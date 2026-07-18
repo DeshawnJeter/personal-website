@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Raven } from "@/components/motion/raven";
 import { LorePanel } from "@/components/easter-eggs/lore-panel";
 import { useKonamiCode } from "@/hooks/use-konami-code";
 import { getFlag, setFlag } from "@/lib/persisted-flag";
@@ -17,13 +16,10 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 export function KonamiEasterEgg() {
-  const [unlocked, setUnlocked] = useState(false);
   const [loreOpen, setLoreOpen] = useState(false);
   const [toast, setToast] = useState(false);
 
   useEffect(() => {
-    setUnlocked(getFlag("konami-found"));
-
     console.log(
       "%cYou opened the console. A cathedral rewards curiosity.",
       "color: #d4af37; font-family: monospace; font-size: 12px;",
@@ -37,7 +33,6 @@ export function KonamiEasterEgg() {
   useKonamiCode(() => {
     const alreadyFound = getFlag("konami-found");
     setFlag("konami-found");
-    setUnlocked(true);
     setLoreOpen(true);
     if (!alreadyFound) {
       setToast(true);
@@ -58,7 +53,6 @@ export function KonamiEasterEgg() {
 
   return (
     <>
-      {unlocked && <Raven mode="companion" />}
       <LorePanel open={loreOpen} onOpenChange={setLoreOpen} />
       <AnimatePresence>
         {toast && (
@@ -70,7 +64,7 @@ export function KonamiEasterEgg() {
             className="border-border bg-card/90 fixed bottom-4 left-4 z-[80] max-w-[240px] rounded-2xl border px-4 py-3 text-sm shadow-lg backdrop-blur-sm sm:bottom-6 sm:left-6"
             role="status"
           >
-            <p className="text-foreground">You found the raven.</p>
+            <p className="text-foreground">You found the hidden lore.</p>
           </motion.div>
         )}
       </AnimatePresence>

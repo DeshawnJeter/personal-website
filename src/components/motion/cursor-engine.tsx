@@ -7,7 +7,6 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { Raven } from "@/components/motion/raven";
 import {
   Crystal,
   CursorGlyphDefs,
@@ -179,37 +178,27 @@ export function CursorEngine() {
         style={{ x: springX, y: springY }}
       >
         <AnimatePresence mode="wait">
-          {activeState === "dragging" ? (
-            <motion.div
-              key="dragging"
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.7 }}
-              className="h-8 w-8"
-            >
-              <Raven mode="companion" />
-            </motion.div>
-          ) : (
-            <motion.svg
-              key={activeState}
-              viewBox="0 0 40 40"
-              className="h-10 w-10"
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.7 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-            >
-              <CursorGlyphDefs />
-              {activeState === "link" && <MiniJester />}
-              {activeState === "button" && <Sigil />}
-              {activeState === "interactive" && <EnergyRing />}
-              {activeState === "typing" && <Quill />}
-              {activeState === "loading" && <TarotWheel />}
-              {activeState === "success" && <Flower />}
-              {activeState === "error" && <Shard />}
-              {activeState === "default" && <Crystal />}
-            </motion.svg>
-          )}
+          <motion.svg
+            key={activeState}
+            viewBox="0 0 40 40"
+            className="h-10 w-10"
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.7 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <CursorGlyphDefs />
+            {activeState === "link" && <MiniJester />}
+            {activeState === "button" && <Sigil />}
+            {(activeState === "interactive" || activeState === "dragging") && (
+              <EnergyRing />
+            )}
+            {activeState === "typing" && <Quill />}
+            {activeState === "loading" && <TarotWheel />}
+            {activeState === "success" && <Flower />}
+            {activeState === "error" && <Shard />}
+            {activeState === "default" && <Crystal />}
+          </motion.svg>
         </AnimatePresence>
       </motion.div>
     </div>
