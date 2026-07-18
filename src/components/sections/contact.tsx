@@ -2,34 +2,27 @@ import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { CtaLink } from "@/components/ui/cta-link";
 import { Reveal } from "@/components/motion/reveal";
-import { chapters, contact, site } from "@/lib/content";
+import { contact, site } from "@/lib/content";
 
 export function Contact() {
-  const chapter = chapters.find((c) => c.id === "contact")!;
-
   return (
     <section
-      id={chapter.id}
+      id="contact"
       aria-labelledby="contact-heading"
       className="py-24 sm:py-32"
     >
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div>
           <Reveal>
-            <Eyebrow>Chapter {chapter.numeral}</Eyebrow>
+            <Eyebrow>{contact.eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.05}>
             <h2
               id="contact-heading"
               className="text-display text-foreground mt-6"
             >
-              {chapter.label}
-            </h2>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <p className="text-heading text-muted-foreground mt-4 italic">
               {contact.title}
-            </p>
+            </h2>
           </Reveal>
           <Reveal delay={0.08}>
             <p className="text-subheading text-muted-foreground mt-5 max-w-[48ch]">

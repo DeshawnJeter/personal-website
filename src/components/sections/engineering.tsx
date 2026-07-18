@@ -2,27 +2,25 @@ import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/motion/reveal";
 import { SkillsGrid } from "@/components/sections/skills";
-import { chapters, whySoftwareEngineering } from "@/lib/content";
+import { whySoftwareEngineering } from "@/lib/content";
 
 export function Engineering() {
-  const chapter = chapters.find((c) => c.id === "engineering")!;
-
   return (
     <section
-      id={chapter.id}
+      id="engineering"
       aria-labelledby="engineering-heading"
       className="border-border bg-card/20 border-y py-24 sm:py-32"
     >
       <Container>
         <Reveal>
-          <Eyebrow>Chapter {chapter.numeral}</Eyebrow>
+          <Eyebrow>{whySoftwareEngineering.eyebrow}</Eyebrow>
         </Reveal>
         <Reveal delay={0.05}>
           <h2
             id="engineering-heading"
             className="text-display text-foreground mt-6"
           >
-            {chapter.label}
+            {whySoftwareEngineering.heading}
           </h2>
         </Reveal>
         <Reveal delay={0.08}>

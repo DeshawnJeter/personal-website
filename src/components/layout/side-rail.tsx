@@ -1,29 +1,27 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { nav } from "@/lib/content";
+import { chapters } from "@/lib/content";
 import { useActiveSection } from "@/hooks/use-active-section";
 
 export function SideRail() {
   const pathname = usePathname();
-  const items = nav.filter((item) => item.href.split("#")[0] === pathname);
-  const ids = items.map((item) => item.href.split("#")[1] ?? "");
+  const ids = chapters.map((chapter) => chapter.id);
   const activeId = useActiveSection(ids);
-  const active = `${pathname}#${activeId}`;
 
-  if (items.length === 0) return null;
+  if (pathname !== "/story") return null;
 
   return (
     <nav
       aria-label="Section progress"
       className="fixed top-1/2 left-6 z-55 hidden -translate-y-1/2 flex-col gap-4 xl:flex"
     >
-      {items.map((item) => {
-        const isActive = active === item.href;
+      {chapters.map((chapter) => {
+        const isActive = activeId === chapter.id;
         return (
           <a
-            key={item.href}
-            href={item.href}
+            key={chapter.id}
+            href={`/story#${chapter.id}`}
             className="group text-foreground/50 hover:text-accent flex items-center gap-2.5 font-mono text-[9.5px] tracking-[0.2em] uppercase transition-colors"
             aria-current={isActive ? "true" : undefined}
           >
@@ -42,7 +40,7 @@ export function SideRail() {
                   : "opacity-0 group-hover:opacity-100"
               }
             >
-              {item.label}
+              {chapter.label}
             </span>
           </a>
         );

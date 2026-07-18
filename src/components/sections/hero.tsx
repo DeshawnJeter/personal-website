@@ -90,7 +90,7 @@ export function Hero() {
           <CtaLink href="/story" variant="solid">
             Explore my story
           </CtaLink>
-          <CtaLink href="#work" variant="outline">
+          <CtaLink href="/work" variant="outline">
             Current project
           </CtaLink>
           <CtaLink href="/resume" variant="gold">
@@ -98,21 +98,6 @@ export function Hero() {
           </CtaLink>
         </motion.div>
       </Container>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-muted-foreground absolute inset-x-0 bottom-8 z-[2] flex justify-center font-mono text-[10px] tracking-[0.3em] uppercase"
-      >
-        <span className="flex flex-col items-center gap-2">
-          Scroll
-          <span
-            className="from-accent h-8 w-px bg-gradient-to-b to-transparent"
-            aria-hidden="true"
-          />
-        </span>
-      </motion.div>
     </section>
   );
 }

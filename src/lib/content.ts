@@ -16,62 +16,30 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/deshawn-jeter-3ab331419",
 };
 
-// The narrative chapters, split across two pages: the origin story lives at
-// /story, and the rest of the arc continues on the homepage. Each page reads
-// as its own self-contained chapter sequence (both numbered I-IV) rather
-// than one continuous I-VIII, since a visitor can land on either page first.
+// The origin story's chapter sequence, all on /story — used for that page's
+// numerals/headings and the side rail's in-page progress there. Philosophy,
+// Engineering, the Workshop, and Contact are standalone pages now, not part
+// of a numbered sequence, so they aren't modeled as chapters.
 export type Chapter = {
   numeral: string;
   id: string;
   label: string;
-  path: "/" | "/story";
 };
 
 export const chapters: Chapter[] = [
-  { numeral: "I", id: "prologue", label: "Prologue", path: "/story" },
-  {
-    numeral: "II",
-    id: "first-spark",
-    label: "The First Spark",
-    path: "/story",
-  },
-  {
-    numeral: "III",
-    id: "learning-to-build",
-    label: "Learning to Build",
-    path: "/story",
-  },
-  {
-    numeral: "IV",
-    id: "finding-my-people",
-    label: "Finding My People",
-    path: "/story",
-  },
-  { numeral: "I", id: "philosophy", label: "The Philosophy", path: "/" },
-  { numeral: "II", id: "engineering", label: "Engineering", path: "/" },
-  { numeral: "III", id: "work", label: "The Workshop", path: "/" },
-  {
-    numeral: "IV",
-    id: "contact",
-    label: "The Journey Continues",
-    path: "/",
-  },
+  { numeral: "I", id: "prologue", label: "Prologue" },
+  { numeral: "II", id: "first-spark", label: "The First Spark" },
+  { numeral: "III", id: "learning-to-build", label: "Learning to Build" },
+  { numeral: "IV", id: "finding-my-people", label: "Finding My People" },
 ];
 
-// Full section list — used by the side rail (in-page progress) and the mobile menu.
-export const nav = chapters.map((chapter) => ({
-  href:
-    chapter.path === "/" ? `/#${chapter.id}` : `${chapter.path}#${chapter.id}`,
-  label: chapter.label,
-})) as { href: string; label: string }[];
-
-// A shorter set for the persistent desktop header, so it stays quiet
-// rather than cramming all eight chapter anchors into one row.
+// The site's top-level destinations — desktop header nav and the mobile menu.
 export const primaryNav = [
   { href: "/story", label: "Story" },
-  { href: "/#work", label: "Current Project" },
-  { href: "/#engineering", label: "Engineering" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/work", label: "Current Project" },
+  { href: "/engineering", label: "Engineering" },
+  { href: "/philosophy", label: "Philosophy" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export type StoryChapter = {
@@ -179,6 +147,7 @@ export const constellation = {
 
 export const whySoftwareEngineering = {
   eyebrow: "Why software engineering",
+  heading: "Engineering",
   title: "The bridge that connected everything else",
   body: [
     "For years, the things I cared about — imagination, structure, people, meaning — lived in separate rooms. Animation and comedy lived in one. Philosophy lived in another. Cabling, kitchens, and vessels lived somewhere else entirely, teaching discipline without ever calling it that.",
@@ -190,6 +159,7 @@ export const whySoftwareEngineering = {
 
 export const philosophy = {
   eyebrow: "Engineering philosophy",
+  heading: "The Philosophy",
   title: "What I build everything on",
   intro: [
     "Most kids ask what they want to be when they grow up. My brain skipped ahead and asked why any of it matters. Not exactly playground conversation.",

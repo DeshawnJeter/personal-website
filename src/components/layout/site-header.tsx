@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { nav, primaryNav, site } from "@/lib/content";
+import { primaryNav, site } from "@/lib/content";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { CursorToggle } from "@/components/layout/cursor-toggle";
 
@@ -104,7 +104,7 @@ export function SiteHeader() {
             className="border-border bg-background/95 overflow-hidden border-t backdrop-blur-md lg:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
-              {nav.map((item) => (
+              {primaryNav.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}

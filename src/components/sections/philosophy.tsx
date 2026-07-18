@@ -3,27 +3,25 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/motion/reveal";
 import { BeliefsGrid } from "@/components/sections/beliefs";
 import { ConstellationGrid } from "@/components/sections/constellation";
-import { chapters, philosophy } from "@/lib/content";
+import { philosophy } from "@/lib/content";
 
 export function Philosophy() {
-  const chapter = chapters.find((c) => c.id === "philosophy")!;
-
   return (
     <section
-      id={chapter.id}
+      id="philosophy"
       aria-labelledby="philosophy-heading"
       className="py-24 sm:py-32"
     >
       <Container>
         <Reveal>
-          <Eyebrow>Chapter {chapter.numeral}</Eyebrow>
+          <Eyebrow>{philosophy.eyebrow}</Eyebrow>
         </Reveal>
         <Reveal delay={0.05}>
           <h2
             id="philosophy-heading"
             className="text-display text-foreground mt-6"
           >
-            {chapter.label}
+            {philosophy.heading}
           </h2>
         </Reveal>
         <Reveal delay={0.08}>

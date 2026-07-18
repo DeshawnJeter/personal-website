@@ -125,7 +125,7 @@ export default function ResumePage() {
             Contact
           </h2>
           <Link
-            href="/#contact"
+            href="/contact"
             className="text-accent font-mono text-[11px] tracking-[0.2em] uppercase underline-offset-4 hover:underline"
           >
             Get in touch →

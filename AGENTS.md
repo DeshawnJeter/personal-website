@@ -1,22 +1,34 @@
 # Agent notes for this repo
 
 Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · shadcn/ui ·
-Framer Motion · GSAP (ScrollTrigger) · Lenis · Lucide. A single-page portfolio
-built as eight narrative "chapters," not a conventional section-by-section
-site — see `README.md` for the stack and structure overview.
+Framer Motion · GSAP (ScrollTrigger) · Lenis · Lucide. A multi-page portfolio:
+the homepage is just Hero, the origin story is a 4-chapter sequence at
+`/story`, and Philosophy/Engineering/the Workshop/Contact each live on their
+own standalone page — see `README.md` for the stack and structure overview.
 
 ## Content lives in one place
 
 `src/lib/content.ts` is the single source of truth for every real sentence on
 the site (story copy, chapter metadata, resume data, lore text). Don't
 hardcode copy in components — add or edit it in `content.ts` and import it.
-The `chapters` array there (numeral/id/label) drives the homepage section
-order, nav, and side rail; keep it as the one place chapter identity is
-defined.
+The `chapters` array there (numeral/id/label) is specifically `/story`'s
+4-chapter sequence — it drives that page's headings and its side rail.
+Philosophy/Engineering/Workshop/Contact aren't chapters; each pulls its
+heading from its own content object (`philosophy.heading`,
+`whySoftwareEngineering.heading`, `currentProject.name`, `contact.title`).
+`primaryNav` is the single list of top-level site destinations, used by both
+the desktop header and the mobile menu.
 
 ## Where things live
 
-- `src/components/sections/` — one component per homepage chapter/section.
+- `src/app/` — one route per top-level destination (`/`, `/story`,
+  `/philosophy`, `/engineering`, `/work`, `/contact`, `/resume`). The four
+  standalone-topic routes share a pattern: a `pt-32 pb-4` "← Back to the
+  portfolio" strip, then the section component — copy that pattern for any
+  new standalone page rather than inventing a new layout.
+- `src/components/sections/` — one component per page's main content. These
+  are route-agnostic (e.g. `Philosophy` doesn't know it's mounted at
+  `/philosophy`) so they can be reused or re-mounted without edits.
 - `src/components/motion/` — decorative/animated pieces (starfield, fog,
   cursor engine). These should degrade gracefully:
   check `prefers-reduced-motion` via `useReducedMotion()` (Framer Motion) or
