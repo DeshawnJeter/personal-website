@@ -7,9 +7,11 @@ export function CursorGlow() {
   const dotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const canHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     if (!canHover || prefersReducedMotion) return;
 
@@ -34,12 +36,19 @@ export function CursorGlow() {
 
     const onOverInteractive = (event: PointerEvent) => {
       const target = event.target as HTMLElement;
-      const interactive = target.closest("a, button, [role='button'], input, textarea");
-      dotRef.current?.classList.toggle("cursor-dot--active", Boolean(interactive));
+      const interactive = target.closest(
+        "a, button, [role='button'], input, textarea",
+      );
+      dotRef.current?.classList.toggle(
+        "cursor-dot--active",
+        Boolean(interactive),
+      );
     };
 
     window.addEventListener("pointermove", onMove, { passive: true });
-    window.addEventListener("pointerover", onOverInteractive, { passive: true });
+    window.addEventListener("pointerover", onOverInteractive, {
+      passive: true,
+    });
     return () => {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerover", onOverInteractive);
@@ -48,10 +57,13 @@ export function CursorGlow() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[70] hidden [@media(hover:hover)_and_(pointer:fine)]:block" aria-hidden="true">
+    <div
+      className="pointer-events-none fixed inset-0 z-[70] hidden [@media(hover:hover)_and_(pointer:fine)]:block"
+      aria-hidden="true"
+    >
       <div
         ref={glowRef}
-        className="fixed left-0 top-0 -ml-44 -mt-44 h-88 w-88 mix-blend-screen"
+        className="fixed top-0 left-0 -mt-44 -ml-44 h-88 w-88 mix-blend-screen"
         style={{
           width: 360,
           height: 360,
@@ -63,7 +75,7 @@ export function CursorGlow() {
       />
       <div
         ref={dotRef}
-        className="cursor-dot fixed left-0 top-0 h-1.5 w-1.5 -ml-[3px] -mt-[3px] rounded-full bg-foreground transition-transform duration-200"
+        className="cursor-dot bg-foreground fixed top-0 left-0 -mt-[3px] -ml-[3px] h-1.5 w-1.5 rounded-full transition-transform duration-200"
       />
     </div>
   );

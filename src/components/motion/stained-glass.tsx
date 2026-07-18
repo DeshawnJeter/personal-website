@@ -35,13 +35,38 @@ export function StainedGlass({ className }: { className?: string }) {
       <g clipPath="url(#lancet-arch)">
         <rect x="24" y="4" width="96" height="200" fill="url(#glass-violet)" />
         <rect x="120" y="4" width="96" height="200" fill="url(#glass-gold)" />
-        <rect x="24" y="204" width="64" height="192" fill="url(#glass-gold)" opacity="0.6" />
-        <rect x="88" y="204" width="64" height="192" fill="url(#glass-violet)" opacity="0.7" />
-        <rect x="152" y="204" width="64" height="192" fill="url(#glass-gold)" opacity="0.5" />
+        <rect
+          x="24"
+          y="204"
+          width="64"
+          height="192"
+          fill="url(#glass-gold)"
+          opacity="0.6"
+        />
+        <rect
+          x="88"
+          y="204"
+          width="64"
+          height="192"
+          fill="url(#glass-violet)"
+          opacity="0.7"
+        />
+        <rect
+          x="152"
+          y="204"
+          width="64"
+          height="192"
+          fill="url(#glass-gold)"
+          opacity="0.5"
+        />
       </g>
 
       {/* leading (the dark metal tracery between panes) */}
-      <g stroke="color-mix(in oklab, var(--gold) 55%, transparent)" strokeWidth="1.4" fill="none">
+      <g
+        stroke="color-mix(in oklab, var(--gold) 55%, transparent)"
+        strokeWidth="1.4"
+        fill="none"
+      >
         <path d="M120 4 C60 4 24 56 24 120 L24 396 L216 396 L216 120 C216 56 180 4 120 4 Z" />
         <path d="M120 4 L120 396" />
         <path d="M24 204 L216 204" />

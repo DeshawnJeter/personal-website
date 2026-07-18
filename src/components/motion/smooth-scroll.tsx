@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion) {

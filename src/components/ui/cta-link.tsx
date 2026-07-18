@@ -20,7 +20,12 @@ const variants = {
   gold: "border-accent/60 text-accent hover:bg-accent/10",
 };
 
-export function CtaLink({ href, children, variant = "outline", className }: CtaLinkProps) {
+export function CtaLink({
+  href,
+  children,
+  variant = "outline",
+  className,
+}: CtaLinkProps) {
   const isExternal = href.startsWith("http") || href.startsWith("mailto:");
   const classes = cn(base, variants[variant], className);
 

@@ -14,7 +14,7 @@ export function Starfield({ className }: { className?: string }) {
     if (!ctx) return;
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     let stars: Star[] = [];
@@ -73,7 +73,7 @@ export function Starfield({ className }: { className?: string }) {
           cancelAnimationFrame(raf);
         }
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
     observer.observe(canvas);
 

@@ -27,7 +27,7 @@ export function SideRail() {
           setActive(`/#${visible.target.id}`);
         }
       },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -39,7 +39,7 @@ export function SideRail() {
   return (
     <nav
       aria-label="Section progress"
-      className="fixed left-6 top-1/2 z-55 hidden -translate-y-1/2 flex-col gap-4 xl:flex"
+      className="fixed top-1/2 left-6 z-55 hidden -translate-y-1/2 flex-col gap-4 xl:flex"
     >
       {nav.map((item) => {
         const isActive = active === item.href;
@@ -47,18 +47,24 @@ export function SideRail() {
           <a
             key={item.href}
             href={item.href}
-            className="group flex items-center gap-2.5 font-mono text-[9.5px] uppercase tracking-[0.2em] text-foreground/50 transition-colors hover:text-accent"
+            className="group text-foreground/50 hover:text-accent flex items-center gap-2.5 font-mono text-[9.5px] tracking-[0.2em] uppercase transition-colors"
             aria-current={isActive ? "true" : undefined}
           >
             <span
               className={`h-[2px] transition-all duration-300 ${
                 isActive
-                  ? "w-9 bg-accent shadow-[0_0_10px_var(--gold)]"
-                  : "w-3.5 bg-foreground/50 group-hover:bg-accent"
+                  ? "bg-accent w-9 shadow-[0_0_10px_var(--gold)]"
+                  : "bg-foreground/50 group-hover:bg-accent w-3.5"
               }`}
               aria-hidden="true"
             />
-            <span className={isActive ? "text-accent opacity-100" : "opacity-0 group-hover:opacity-100"}>
+            <span
+              className={
+                isActive
+                  ? "text-accent opacity-100"
+                  : "opacity-0 group-hover:opacity-100"
+              }
+            >
               {item.label}
             </span>
           </a>

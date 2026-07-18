@@ -22,28 +22,31 @@ export function SiteHeader() {
     <header
       className={`fixed inset-x-0 top-0 z-60 transition-[padding,border-color,background] duration-500 ${
         scrolled
-          ? "border-b border-border bg-background/85 py-3 backdrop-blur-md"
-          : "border-b border-transparent bg-gradient-to-b from-background/80 to-transparent py-5"
+          ? "border-border bg-background/85 border-b py-3 backdrop-blur-md"
+          : "from-background/80 border-b border-transparent bg-gradient-to-b to-transparent py-5"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-2.5 whitespace-nowrap font-display text-lg text-foreground"
+          className="font-display text-foreground flex shrink-0 items-center gap-2.5 text-lg whitespace-nowrap"
         >
-          <span className="h-2.5 w-2.5 shrink-0 rotate-45 border border-accent" aria-hidden="true" />
+          <span
+            className="border-accent h-2.5 w-2.5 shrink-0 rotate-45 border"
+            aria-hidden="true"
+          />
           DeShawn Jeter
         </Link>
 
         <nav
-          className="hidden items-center gap-8 whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/70 lg:flex"
+          className="text-foreground/70 hidden items-center gap-8 font-mono text-[11px] tracking-[0.22em] whitespace-nowrap uppercase lg:flex"
           aria-label="Primary"
         >
           {primaryNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors hover:text-accent"
+              className="hover:text-accent transition-colors"
             >
               {item.label}
             </Link>
@@ -53,14 +56,14 @@ export function SiteHeader() {
         <div className="flex shrink-0 items-center gap-3">
           <Link
             href="/resume"
-            className="hidden rounded-sm border border-accent/60 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-accent transition-colors hover:bg-accent/10 sm:inline-block"
+            className="border-accent/60 text-accent hover:bg-accent/10 hidden rounded-sm border px-4 py-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-colors sm:inline-block"
           >
             Resume
           </Link>
           <ThemeToggle />
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border lg:hidden"
+            className="border-border inline-flex h-9 w-9 items-center justify-center rounded-full border lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -80,7 +83,7 @@ export function SiteHeader() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-md lg:hidden"
+            className="border-border bg-background/95 overflow-hidden border-t backdrop-blur-md lg:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
               {nav.map((item) => (
@@ -88,7 +91,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-md px-2 py-2.5 font-mono text-xs uppercase tracking-[0.2em] text-foreground/80 transition-colors hover:bg-secondary hover:text-accent"
+                  className="text-foreground/80 hover:bg-secondary hover:text-accent rounded-md px-2 py-2.5 font-mono text-xs tracking-[0.2em] uppercase transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -96,7 +99,7 @@ export function SiteHeader() {
               <Link
                 href="/resume"
                 onClick={() => setOpen(false)}
-                className="mt-2 rounded-md border border-accent/60 px-2 py-2.5 text-center font-mono text-xs uppercase tracking-[0.2em] text-accent"
+                className="border-accent/60 text-accent mt-2 rounded-md border px-2 py-2.5 text-center font-mono text-xs tracking-[0.2em] uppercase"
               >
                 Resume
               </Link>

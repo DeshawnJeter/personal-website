@@ -27,7 +27,10 @@ export function HolographicJester({ className }: { className?: string }) {
   return (
     <motion.div
       aria-hidden="true"
-      className={cn("pointer-events-none select-none mix-blend-screen", className)}
+      className={cn(
+        "pointer-events-none mix-blend-screen select-none",
+        className,
+      )}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}

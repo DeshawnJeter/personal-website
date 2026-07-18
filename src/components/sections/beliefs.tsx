@@ -11,7 +11,10 @@ export function Beliefs() {
           <Eyebrow>Core beliefs</Eyebrow>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 id="beliefs-heading" className="mt-6 max-w-2xl text-display text-foreground">
+          <h2
+            id="beliefs-heading"
+            className="text-display text-foreground mt-6 max-w-2xl"
+          >
             Three things I build everything on.
           </h2>
         </Reveal>
@@ -21,12 +24,18 @@ export function Beliefs() {
             <Reveal key={belief.title} delay={0.08 * index}>
               <article
                 tabIndex={0}
-                className="group h-full rounded-2xl border border-border bg-card/40 p-7 transition-colors focus-visible:border-accent hover:border-accent/50"
+                className="group border-border bg-card/40 focus-visible:border-accent hover:border-accent/50 h-full rounded-2xl border p-7 transition-colors"
               >
-                <span className="font-display text-2xl text-accent">{belief.numeral}</span>
-                <h3 className="mt-4 text-subheading text-foreground">{belief.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground">{belief.lede}</p>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/0 max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-40 group-hover:text-muted-foreground/90 group-focus-visible:max-h-40 group-focus-visible:text-muted-foreground/90">
+                <span className="font-display text-accent text-2xl">
+                  {belief.numeral}
+                </span>
+                <h3 className="text-subheading text-foreground mt-4">
+                  {belief.title}
+                </h3>
+                <p className="text-muted-foreground mt-3 text-sm">
+                  {belief.lede}
+                </p>
+                <p className="text-muted-foreground/0 group-hover:text-muted-foreground/90 group-focus-visible:text-muted-foreground/90 mt-4 max-h-0 overflow-hidden text-sm leading-relaxed transition-all duration-500 group-hover:max-h-40 group-focus-visible:max-h-40">
                   {belief.more}
                 </p>
               </article>

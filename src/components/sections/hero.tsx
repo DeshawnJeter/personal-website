@@ -8,11 +8,14 @@ import { CathedralArches } from "@/components/motion/cathedral-arches";
 
 const Starfield = dynamic(
   () => import("@/components/motion/starfield").then((m) => m.Starfield),
-  { ssr: false }
+  { ssr: false },
 );
 const HolographicJester = dynamic(
-  () => import("@/components/motion/holographic-jester").then((m) => m.HolographicJester),
-  { ssr: false }
+  () =>
+    import("@/components/motion/holographic-jester").then(
+      (m) => m.HolographicJester,
+    ),
+  { ssr: false },
 );
 
 const lineVariants = {
@@ -29,18 +32,18 @@ export function Hero() {
     >
       <Starfield className="absolute inset-0 h-full w-full" />
       <CathedralArches className="pointer-events-none absolute inset-x-0 top-0 h-[42vh] w-full opacity-70" />
-      <HolographicJester className="absolute right-[4%] top-[14%] hidden h-56 w-48 md:block lg:right-[8%] lg:h-64 lg:w-56" />
+      <HolographicJester className="absolute top-[14%] right-[4%] hidden h-56 w-48 md:block lg:right-[8%] lg:h-64 lg:w-56" />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[32vh] bg-gradient-to-b from-transparent to-background"
+        className="to-background pointer-events-none absolute inset-x-0 bottom-0 h-[32vh] bg-gradient-to-b from-transparent"
         aria-hidden="true"
       />
 
       <Container className="relative z-[2] text-center">
-        <p className="mx-auto mb-6 flex w-fit items-center gap-3 font-mono text-[11px] uppercase tracking-[0.34em] text-accent">
+        <p className="text-accent mx-auto mb-6 flex w-fit items-center gap-3 font-mono text-[11px] tracking-[0.34em] uppercase">
           Creative technologist &amp; software engineer
         </p>
 
-        <h1 className="mx-auto max-w-4xl text-hero leading-[1.02] text-foreground">
+        <h1 className="text-hero text-foreground mx-auto max-w-4xl leading-[1.02]">
           <span className="block overflow-hidden">
             <motion.span
               className="block"
@@ -54,11 +57,15 @@ export function Hero() {
           </span>
           <span className="block overflow-hidden">
             <motion.span
-              className="block italic text-accent"
+              className="text-accent block italic"
               initial="hidden"
               animate="visible"
               variants={lineVariants}
-              transition={{ duration: 0.8, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               becomes architecture.
             </motion.span>
@@ -68,10 +75,10 @@ export function Hero() {
         {/* Rendered immediately (no JS-driven fade) — this is the LCP
             candidate, and gating its paint behind Framer Motion state
             costs seconds under CPU-throttled conditions. */}
-        <p className="mx-auto mt-8 max-w-[48ch] text-subheading text-muted-foreground">
-          I don&rsquo;t just build software — I build experiences people remember.
-          This site is less a list of projects and more an answer to why I build
-          at all.
+        <p className="text-subheading text-muted-foreground mx-auto mt-8 max-w-[48ch]">
+          I don&rsquo;t just build software — I build experiences people
+          remember. This site is less a list of projects and more an answer to
+          why I build at all.
         </p>
 
         <motion.div
@@ -96,11 +103,14 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="absolute inset-x-0 bottom-8 z-[2] flex justify-center font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+        className="text-muted-foreground absolute inset-x-0 bottom-8 z-[2] flex justify-center font-mono text-[10px] tracking-[0.3em] uppercase"
       >
         <span className="flex flex-col items-center gap-2">
           Scroll
-          <span className="h-8 w-px bg-gradient-to-b from-accent to-transparent" aria-hidden="true" />
+          <span
+            className="from-accent h-8 w-px bg-gradient-to-b to-transparent"
+            aria-hidden="true"
+          />
         </span>
       </motion.div>
     </section>

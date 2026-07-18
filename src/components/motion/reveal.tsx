@@ -15,7 +15,12 @@ const variants: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function Reveal({ children, delay = 0, className, as = "div" }: RevealProps) {
+export function Reveal({
+  children,
+  delay = 0,
+  className,
+  as = "div",
+}: RevealProps) {
   const reduceMotion = useReducedMotion();
   const MotionTag = motion[as];
 

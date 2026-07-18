@@ -11,20 +11,25 @@ import { SiteFooter } from "@/components/layout/site-footer";
 // critical bundle so they never compete with hydration for main-thread time.
 const SmoothScroll = dynamic(
   () => import("@/components/motion/smooth-scroll").then((m) => m.SmoothScroll),
-  { ssr: false }
+  { ssr: false },
 );
 const CursorGlow = dynamic(
   () => import("@/components/layout/cursor-glow").then((m) => m.CursorGlow),
-  { ssr: false }
+  { ssr: false },
 );
 const GrainOverlay = dynamic(
   () => import("@/components/layout/grain-overlay").then((m) => m.GrainOverlay),
-  { ssr: false }
+  { ssr: false },
 );
 
 export function SiteChrome({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} value={{ light: "light", dark: "dark" }}>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem={false}
+      value={{ light: "light", dark: "dark" }}
+    >
       <SmoothScroll>
         <div className="print:hidden">
           <GrainOverlay />

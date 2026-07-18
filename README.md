@@ -38,3 +38,16 @@ cleanly via its own print stylesheet.
 - `npm run build` — production build
 - `npm run start` — serve the production build
 - `npm run lint` — ESLint
+- `npm run format` / `npm run format:check` — Prettier (writes / checks only)
+- `npm run typecheck` — `tsc --noEmit`
+- `npm run verify` — the full local gate (format check, lint, typecheck,
+  build); run this before considering a milestone done
+
+## Tooling
+
+- **Husky** runs a `pre-commit` hook (`lint-staged` — ESLint + Prettier on
+  staged files) and a `pre-push` hook (`typecheck`).
+- **GitHub Actions** (`.github/workflows/ci.yml`) re-runs format check, lint,
+  typecheck, and build on every push/PR to `main`.
+- Commits and pushes are always a manual, explicit step — nothing in this
+  repo auto-commits or auto-pushes on your behalf.

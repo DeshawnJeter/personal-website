@@ -167,7 +167,10 @@ export const philosophy = {
     { roman: "i", text: "Creativity is architecture." },
     { roman: "ii", text: "Chaos is raw material." },
     { roman: "iii", text: "Software should make people feel something." },
-    { roman: "iv", text: "Engineering and imagination are teammates, not rivals." },
+    {
+      roman: "iv",
+      text: "Engineering and imagination are teammates, not rivals.",
+    },
     { roman: "v", text: "Every obstacle becomes material." },
     { roman: "vi", text: "Meaning isn't found. It's built." },
   ],
@@ -178,22 +181,58 @@ export const skillGalaxy = {
   title: "No progress bars. A system with gravity.",
   lede: "Nine disciplines orbiting one idea: logic and creativity are teammates.",
   planets: [
-    { name: "JavaScript", detail: "The language that's been under almost everything I've shipped." },
-    { name: "TypeScript", detail: "Structure and intention, written down so future-me doesn't have to guess." },
-    { name: "React", detail: "Components as the grammar for building interfaces that hold up under change." },
-    { name: "Next.js", detail: "Routing, rendering, and performance handled so the work can stay on the product." },
-    { name: "Node.js", detail: "The other half of the conversation — where the interface meets the system." },
-    { name: "HTML & CSS", detail: "The physical layer of the web. Invisible when done right, everything when it's not." },
-    { name: "Git & GitHub", detail: "A discipline, not a tool — the same care I learned certifying cable runs." },
-    { name: "Systems design", detail: "Thinking in flows, states, and edge cases before a single line gets written." },
-    { name: "Product & UX thinking", detail: "Storytelling applied to interfaces — the reason things feel obvious in hindsight." },
+    {
+      name: "JavaScript",
+      detail: "The language that's been under almost everything I've shipped.",
+    },
+    {
+      name: "TypeScript",
+      detail:
+        "Structure and intention, written down so future-me doesn't have to guess.",
+    },
+    {
+      name: "React",
+      detail:
+        "Components as the grammar for building interfaces that hold up under change.",
+    },
+    {
+      name: "Next.js",
+      detail:
+        "Routing, rendering, and performance handled so the work can stay on the product.",
+    },
+    {
+      name: "Node.js",
+      detail:
+        "The other half of the conversation — where the interface meets the system.",
+    },
+    {
+      name: "HTML & CSS",
+      detail:
+        "The physical layer of the web. Invisible when done right, everything when it's not.",
+    },
+    {
+      name: "Git & GitHub",
+      detail:
+        "A discipline, not a tool — the same care I learned certifying cable runs.",
+    },
+    {
+      name: "Systems design",
+      detail:
+        "Thinking in flows, states, and edge cases before a single line gets written.",
+    },
+    {
+      name: "Product & UX thinking",
+      detail:
+        "Storytelling applied to interfaces — the reason things feel obvious in hindsight.",
+    },
   ],
 };
 
 export const currentProject = {
   eyebrow: "Current project — learning journey",
   name: "FrameFeast",
-  tagline: "An AI-powered, anime-inspired cooking app, still very much in progress.",
+  tagline:
+    "An AI-powered, anime-inspired cooking app, still very much in progress.",
   summary:
     "Most budget recipe apps assume you already have a full pantry and money to spare. FrameFeast doesn't. It's built to scan what's actually in your kitchen, match it against a growing library of original recipes under $5 a serving, and give SNAP/EBT users full access for free. Cooking turns into something you level up at instead of something you dread.",
   problem:

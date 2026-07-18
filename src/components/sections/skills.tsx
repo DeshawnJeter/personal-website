@@ -5,18 +5,25 @@ import { skillGalaxy } from "@/lib/content";
 
 export function Skills() {
   return (
-    <section id="skills" aria-labelledby="skills-heading" className="py-24 sm:py-32">
+    <section
+      id="skills"
+      aria-labelledby="skills-heading"
+      className="py-24 sm:py-32"
+    >
       <Container>
         <Reveal>
           <Eyebrow>{skillGalaxy.eyebrow}</Eyebrow>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 id="skills-heading" className="mt-6 max-w-2xl text-display text-foreground">
+          <h2
+            id="skills-heading"
+            className="text-display text-foreground mt-6 max-w-2xl"
+          >
             {skillGalaxy.title}
           </h2>
         </Reveal>
         <Reveal delay={0.08}>
-          <p className="mt-5 max-w-[56ch] text-subheading text-muted-foreground">
+          <p className="text-subheading text-muted-foreground mt-5 max-w-[56ch]">
             {skillGalaxy.lede}
           </p>
         </Reveal>
@@ -24,12 +31,14 @@ export function Skills() {
         <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillGalaxy.planets.map((planet, index) => (
             <Reveal key={planet.name} delay={0.04 * index} as="li">
-              <div className="group h-full rounded-xl border border-border bg-card/30 p-6 transition-colors hover:border-cyan/60 focus-within:border-cyan/60">
-                <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyan">
+              <div className="group border-border bg-card/30 hover:border-cyan/60 focus-within:border-cyan/60 h-full rounded-xl border p-6 transition-colors">
+                <span className="text-cyan font-mono text-[10px] tracking-[0.24em] uppercase">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-2 text-subheading text-foreground">{planet.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="text-subheading text-foreground mt-2">
+                  {planet.name}
+                </h3>
+                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                   {planet.detail}
                 </p>
               </div>

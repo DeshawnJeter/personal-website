@@ -5,18 +5,25 @@ import { constellation } from "@/lib/content";
 
 export function Constellation() {
   return (
-    <section id="mind" aria-labelledby="mind-heading" className="py-24 sm:py-32">
+    <section
+      id="mind"
+      aria-labelledby="mind-heading"
+      className="py-24 sm:py-32"
+    >
       <Container>
         <Reveal>
           <Eyebrow>{constellation.eyebrow}</Eyebrow>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 id="mind-heading" className="mt-6 max-w-2xl text-display text-foreground">
+          <h2
+            id="mind-heading"
+            className="text-display text-foreground mt-6 max-w-2xl"
+          >
             {constellation.title}
           </h2>
         </Reveal>
         <Reveal delay={0.08}>
-          <p className="mt-5 max-w-[56ch] text-subheading text-muted-foreground">
+          <p className="text-subheading text-muted-foreground mt-5 max-w-[56ch]">
             {constellation.lede}
           </p>
         </Reveal>
@@ -38,15 +45,15 @@ export function Constellation() {
           </svg>
           {constellation.stars.map((star, index) => (
             <Reveal key={star.name} delay={0.1 * index}>
-              <article className="relative rounded-2xl border border-border bg-card/40 p-7">
+              <article className="border-border bg-card/40 relative rounded-2xl border p-7">
                 <span
-                  className="mx-auto flex h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_16px_var(--gold)]"
+                  className="bg-accent mx-auto flex h-2.5 w-2.5 rounded-full shadow-[0_0_16px_var(--gold)]"
                   aria-hidden="true"
                 />
-                <h3 className="mt-5 text-center text-subheading text-foreground">
+                <h3 className="text-subheading text-foreground mt-5 text-center">
                   {star.name}
                 </h3>
-                <p className="mt-3 text-center text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground mt-3 text-center text-sm leading-relaxed">
                   {star.detail}
                 </p>
               </article>

@@ -125,8 +125,11 @@
   --sidebar-border: rgba(201, 207, 218, 0.16);
   --sidebar-ring: var(--cyan);
 
-  --font-body: var(--font-sora), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display-family: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
+  --font-body:
+    var(--font-sora), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-display-family:
+    var(--font-cormorant), "Iowan Old Style", Georgia, serif;
   --font-code-family: var(--font-jbmono), ui-monospace, Menlo, monospace;
 }
 
@@ -189,7 +192,9 @@
 }
 
 @media (forced-colors: active) {
-  .btn, button, a[class*="btn"] {
+  .btn,
+  button,
+  a[class*="btn"] {
     forced-color-adjust: none;
     border: 1px solid ButtonText;
     color: ButtonText;
@@ -200,7 +205,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -212,7 +219,9 @@
    cursor automatically wherever the browser can't load/render the image. */
 @media (hover: hover) and (pointer: fine) {
   html {
-    cursor: url("/cursors/gothic-cross.svg") 14 10, auto;
+    cursor:
+      url("/cursors/gothic-cross.svg") 14 10,
+      auto;
   }
 }
 
@@ -224,7 +233,8 @@
     --border: rgba(20, 24, 31, 0.2);
     --accent: #8a6a2e;
   }
-  .grain, .cursor-dot {
+  .grain,
+  .cursor-dot {
     display: none !important;
   }
 }
@@ -256,13 +266,19 @@
     outline: 2px solid var(--ring);
     outline-offset: 3px;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     font-weight: 300;
     letter-spacing: -0.01em;
     line-height: 1.05;
   }
-  .dark h1, .dark h2, .dark h3, .dark h4 {
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4 {
     text-shadow: 0 0 28px color-mix(in oklab, var(--violet) 22%, transparent);
   }
 }
@@ -283,17 +299,40 @@
     animation: grain 700ms steps(3) infinite;
   }
   @keyframes grain {
-    0% { transform: translate(0, 0); }
-    33% { transform: translate(-4%, 3%); }
-    66% { transform: translate(3%, -3%); }
-    100% { transform: translate(0, 0); }
+    0% {
+      transform: translate(0, 0);
+    }
+    33% {
+      transform: translate(-4%, 3%);
+    }
+    66% {
+      transform: translate(3%, -3%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
 
-  .text-hero { font-size: var(--text-hero); }
-  .text-display { font-size: var(--text-display); }
-  .text-heading { font-size: var(--text-heading); }
-  .text-subheading { font-size: var(--text-subheading); }
-  .text-body { font-size: var(--text-body); }
-  .text-caption { font-size: var(--text-caption); }
-  .text-code { font-size: var(--text-code); font-family: var(--font-code); }
+  .text-hero {
+    font-size: var(--text-hero);
+  }
+  .text-display {
+    font-size: var(--text-display);
+  }
+  .text-heading {
+    font-size: var(--text-heading);
+  }
+  .text-subheading {
+    font-size: var(--text-subheading);
+  }
+  .text-body {
+    font-size: var(--text-body);
+  }
+  .text-caption {
+    font-size: var(--text-caption);
+  }
+  .text-code {
+    font-size: var(--text-code);
+    font-family: var(--font-code);
+  }
 }
