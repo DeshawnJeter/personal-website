@@ -1,0 +1,59 @@
+# Agent notes for this repo
+
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · shadcn/ui ·
+Framer Motion · GSAP (ScrollTrigger) · Lenis · Lucide. A single-page portfolio
+built as eight narrative "chapters," not a conventional section-by-section
+site — see `README.md` for the stack and structure overview.
+
+## Content lives in one place
+
+`src/lib/content.ts` is the single source of truth for every real sentence on
+the site (story copy, chapter metadata, jester lines, resume data, lore
+text). Don't hardcode copy in components — add or edit it in `content.ts`
+and import it. The `chapters` array there (numeral/id/label) drives the
+homepage section order, nav, side rail, and the jester guide's per-chapter
+captions; keep it as the one place chapter identity is defined.
+
+## Where things live
+
+- `src/components/sections/` — one component per homepage chapter/section.
+- `src/components/motion/` — decorative/animated pieces (starfield, fog,
+  raven, cursor engine, jester guide). These should degrade gracefully:
+  check `prefers-reduced-motion` via `useReducedMotion()` (Framer Motion) or
+  `window.matchMedia("(prefers-reduced-motion: reduce)")`, and gate anything
+  cursor-following behind `(hover: hover) and (pointer: fine)` so touch/
+  stylus devices get the untouched native experience.
+- `src/components/layout/` — header, side rail, footer, toggles.
+- `src/components/easter-eggs/` — opt-in hidden discoveries (Konami code,
+  lore panel). These must never be required for core functionality and
+  should stay easy to disable/ignore.
+- `src/hooks/` — shared client-side hooks (`useActiveSection`,
+  `useKonamiCode`, `useMagneticHover`). Check here before writing a new
+  `IntersectionObserver`/`pointermove`/keydown listener from scratch.
+- `src/lib/persisted-flag.ts` — the one helper for boolean localStorage
+  flags (dismissed/unlocked/disabled state). Reuse it instead of hand-rolling
+  `localStorage.getItem`/`setItem` elsewhere.
+- `src/lib/cursor-events.ts` — the `CustomEvent` bridge used to trigger
+  transient cursor states (loading/success/error) from components far from
+  the globally-mounted cursor engine. Prefer this over prop-drilling or a
+  new context for one-off cross-tree signals.
+
+## Global chrome vs. homepage-only
+
+`src/components/site-chrome.tsx` mounts everything global (header, side
+rail, cursor engine, grain overlay) via `dynamic(..., { ssr: false })` inside
+a `print:hidden` wrapper, since none of it should block hydration or show up
+when printing. The narrative-only pieces (jester guide, fog, ambient raven,
+the Konami easter egg) are additionally gated behind `pathname === "/"` in
+that same file — `/resume` stays clean. If you add a new global decorative
+piece, follow this pattern rather than mounting it directly in a section.
+
+## Workflow
+
+- `npm run verify` runs the full local gate (format check, lint, typecheck,
+  build) — run this before considering a change done.
+- Husky's `pre-commit` runs `lint-staged` (ESLint + Prettier on staged
+  files); `pre-push` runs `typecheck`. Don't bypass these with `--no-verify`.
+- Nothing in this repo auto-commits or auto-pushes. Committing and pushing
+  are always explicit, human-approved steps — there was a postbuild hook
+  that did this automatically in the past; it was deliberately removed.
