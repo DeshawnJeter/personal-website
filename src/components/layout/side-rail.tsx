@@ -6,18 +6,19 @@ import { useActiveSection } from "@/hooks/use-active-section";
 
 export function SideRail() {
   const pathname = usePathname();
-  const ids = nav.map((item) => item.href.split("#")[1] ?? "");
+  const items = nav.filter((item) => item.href.split("#")[0] === pathname);
+  const ids = items.map((item) => item.href.split("#")[1] ?? "");
   const activeId = useActiveSection(ids);
-  const active = `/#${activeId}`;
+  const active = `${pathname}#${activeId}`;
 
-  if (pathname !== "/") return null;
+  if (items.length === 0) return null;
 
   return (
     <nav
       aria-label="Section progress"
       className="fixed top-1/2 left-6 z-55 hidden -translate-y-1/2 flex-col gap-4 xl:flex"
     >
-      {nav.map((item) => {
+      {items.map((item) => {
         const isActive = active === item.href;
         return (
           <a

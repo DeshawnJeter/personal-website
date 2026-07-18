@@ -16,35 +16,59 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/deshawn-jeter-3ab331419",
 };
 
-// The eight narrative chapters that structure the homepage, in reading
-// order. Every chapter section uses this for its numeral + id + label.
+// The narrative chapters, split across two pages: the origin story lives at
+// /story, and the rest of the arc continues on the homepage. Each page reads
+// as its own self-contained chapter sequence (both numbered I-IV) rather
+// than one continuous I-VIII, since a visitor can land on either page first.
 export type Chapter = {
   numeral: string;
   id: string;
   label: string;
+  path: "/" | "/story";
 };
 
 export const chapters: Chapter[] = [
-  { numeral: "I", id: "prologue", label: "Prologue" },
-  { numeral: "II", id: "first-spark", label: "The First Spark" },
-  { numeral: "III", id: "learning-to-build", label: "Learning to Build" },
-  { numeral: "IV", id: "finding-my-people", label: "Finding My People" },
-  { numeral: "V", id: "philosophy", label: "The Philosophy" },
-  { numeral: "VI", id: "engineering", label: "Engineering" },
-  { numeral: "VII", id: "work", label: "The Workshop" },
-  { numeral: "VIII", id: "contact", label: "The Journey Continues" },
+  { numeral: "I", id: "prologue", label: "Prologue", path: "/story" },
+  {
+    numeral: "II",
+    id: "first-spark",
+    label: "The First Spark",
+    path: "/story",
+  },
+  {
+    numeral: "III",
+    id: "learning-to-build",
+    label: "Learning to Build",
+    path: "/story",
+  },
+  {
+    numeral: "IV",
+    id: "finding-my-people",
+    label: "Finding My People",
+    path: "/story",
+  },
+  { numeral: "I", id: "philosophy", label: "The Philosophy", path: "/" },
+  { numeral: "II", id: "engineering", label: "Engineering", path: "/" },
+  { numeral: "III", id: "work", label: "The Workshop", path: "/" },
+  {
+    numeral: "IV",
+    id: "contact",
+    label: "The Journey Continues",
+    path: "/",
+  },
 ];
 
 // Full section list — used by the side rail (in-page progress) and the mobile menu.
 export const nav = chapters.map((chapter) => ({
-  href: `/#${chapter.id}`,
+  href:
+    chapter.path === "/" ? `/#${chapter.id}` : `${chapter.path}#${chapter.id}`,
   label: chapter.label,
 })) as { href: string; label: string }[];
 
 // A shorter set for the persistent desktop header, so it stays quiet
 // rather than cramming all eight chapter anchors into one row.
 export const primaryNav = [
-  { href: "/#prologue", label: "Story" },
+  { href: "/story", label: "Story" },
   { href: "/#work", label: "Current Project" },
   { href: "/#engineering", label: "Engineering" },
   { href: "/#contact", label: "Contact" },
