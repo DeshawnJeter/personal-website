@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { PrintButton } from "@/components/print-button";
@@ -23,10 +24,22 @@ export default function ResumePage() {
           <PrintButton />
         </div>
 
-        <p className="text-accent font-mono text-[11px] tracking-[0.34em] uppercase">
-          {resume.eyebrow}
-        </p>
-        <h1 className="text-display text-foreground mt-4">{site.name}</h1>
+        <div className="flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center">
+          <div>
+            <p className="text-accent font-mono text-[11px] tracking-[0.34em] uppercase">
+              {resume.eyebrow}
+            </p>
+            <h1 className="text-display text-foreground mt-4">{site.name}</h1>
+          </div>
+          <Image
+            src="/images/profile.jpg"
+            alt={`Portrait of ${site.name}`}
+            width={140}
+            height={140}
+            priority
+            className="border-border h-24 w-24 shrink-0 rounded-full border object-cover sm:h-28 sm:w-28 print:h-20 print:w-20"
+          />
+        </div>
         <p className="text-subheading text-muted-foreground mt-3 max-w-[60ch]">
           {resume.summary}
         </p>
