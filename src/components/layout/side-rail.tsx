@@ -1,38 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { nav } from "@/lib/content";
+import { useActiveSection } from "@/hooks/use-active-section";
 
 export function SideRail() {
   const pathname = usePathname();
-  const [active, setActive] = useState<string>(nav[0]?.href ?? "");
-
-  useEffect(() => {
-    if (pathname !== "/") return;
-
-    const ids = nav.map((item) => item.href.split("#")[1]);
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) {
-          setActive(`/#${visible.target.id}`);
-        }
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [pathname]);
+  const ids = nav.map((item) => item.href.split("#")[1] ?? "");
+  const activeId = useActiveSection(ids);
+  const active = `/#${activeId}`;
 
   if (pathname !== "/") return null;
 

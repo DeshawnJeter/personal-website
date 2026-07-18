@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SideRail } from "@/components/layout/side-rail";
@@ -21,8 +22,33 @@ const GrainOverlay = dynamic(
   () => import("@/components/layout/grain-overlay").then((m) => m.GrainOverlay),
   { ssr: false },
 );
+const Fog = dynamic(
+  () => import("@/components/motion/fog").then((m) => m.Fog),
+  { ssr: false },
+);
+const AmbientRaven = dynamic(
+  () => import("@/components/motion/raven").then((m) => m.Raven),
+  { ssr: false },
+);
+const JesterGuide = dynamic(
+  () => import("@/components/motion/jester-guide").then((m) => m.JesterGuide),
+  { ssr: false },
+);
+const KonamiEasterEgg = dynamic(
+  () =>
+    import("@/components/easter-eggs/konami-easter-egg").then(
+      (m) => m.KonamiEasterEgg,
+    ),
+  { ssr: false },
+);
 
 export function SiteChrome({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  // The cathedral atmosphere (jester guide, fog, ambient raven, hidden
+  // discoveries) belongs to the narrative homepage — not the print-oriented
+  // resume page, which stays clean and unaffected on screen too.
+  const isHomepage = pathname === "/";
+
   return (
     <ThemeProvider
       attribute="class"
@@ -32,6 +58,14 @@ export function SiteChrome({ children }: { children: ReactNode }) {
     >
       <SmoothScroll>
         <div className="print:hidden">
+          {isHomepage && (
+            <>
+              <Fog />
+              <AmbientRaven mode="ambient" />
+              <JesterGuide />
+              <KonamiEasterEgg />
+            </>
+          )}
           <GrainOverlay />
           <CursorGlow />
           <SiteHeader />

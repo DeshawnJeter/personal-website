@@ -372,3 +372,41 @@ export const contact = {
   title: "Come in. The door is unlocked.",
   lede: "The chapters end here — but the story doesn't. Tell me what you're building, and let's write the next one together. Send a message here, or reach out directly by email.",
 };
+
+// Copy for the holographic jester guide (src/components/motion/jester-guide.tsx).
+// `chapters` is keyed by chapter id (plus "hero") and shown once per chapter
+// as the visitor scrolls past. `asides` are optional, lower-frequency lines
+// shown instead when a visitor clicks the jester directly.
+export const jesterLines = {
+  chapters: {
+    hero: "Welcome, traveler. I'm the jester — equal parts guide and gargoyle. Scroll when you're ready.",
+    prologue:
+      "Ah, the beginning. Every good story starts with someone who couldn't stop asking questions.",
+    "first-spark":
+      "This is my favorite part. Watch what a little curiosity does to a person.",
+    "learning-to-build":
+      "Cables, kitchens, decks, and code — turns out discipline doesn't care what you call the job.",
+    "finding-my-people": "Nobody builds a cathedral alone. Not even this one.",
+    philosophy: "Careful — this chapter bites back if you skim it.",
+    engineering:
+      "Here's where the story stops being metaphor and starts being syntax.",
+    work: "Unfinished, on purpose. The good ones always are. (Psst — try an old cheat code sometime.)",
+    contact:
+      "You made it to the end of the tour. Or is it the beginning? Either way — say hello.",
+  } as Record<string, string>,
+  asides: [
+    "I'd take a bow, but I'm mostly light and mischief.",
+    "Fun fact: gargoyles were the original error handlers. They just caught rain instead of exceptions.",
+    "Between us — the stained glass is louder than it looks.",
+    "I've been floating here since the last deploy. No complaints.",
+    "Rumor has it there's a raven who answers to an old cheat code.",
+  ],
+};
+
+// The secret lore panel's copy (src/components/easter-eggs/lore-panel.tsx),
+// unlocked via the Konami code or the "?" key.
+export const loreText = [
+  "Long before there was a homepage, there was just a question: what does it feel like to build something with your whole self — the part that writes code and the part that used to draw storyboards in the margins of notebooks?",
+  "The answer looked, in my head, like a cathedral. Not a cold one — one built by someone who actually likes the people wandering through it. Gothic arches for structure. Stained glass for the parts of the story that only make sense with light behind them. And somewhere up in the rafters, a jester, because no cathedral built by an engineer with a sense of humor should take itself too seriously.",
+  "You found this by an old cheat code, or a stray keystroke, or because someone told you where to look. However you got here — welcome to the part of the site that isn't trying to get you a callback. It's just glad you stayed a little longer.",
+];
