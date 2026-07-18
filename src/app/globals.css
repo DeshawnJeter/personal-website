@@ -215,13 +215,12 @@
   }
 }
 
-/* Custom gothic cursor — desktop pointers only. Falls back to the native
-   cursor automatically wherever the browser can't load/render the image. */
+/* The custom cursor engine (cursor-engine.tsx) hides the native cursor only
+   once it has confirmed a hover-capable, non-reduced-motion pointer and
+   rendered its own — never on touch/stylus or when disabled/unsupported. */
 @media (hover: hover) and (pointer: fine) {
-  html {
-    cursor:
-      url("/cursors/gothic-cross.svg") 14 10,
-      auto;
+  html.cursor-engine-active {
+    cursor: none;
   }
 }
 
@@ -234,7 +233,6 @@
     --accent: #8a6a2e;
   }
   .grain,
-  .cursor-dot,
   .fog,
   .raven-ambient {
     display: none !important;
@@ -286,11 +284,6 @@
 }
 
 @layer utilities {
-  .cursor-dot--active {
-    transform: scale(3.4) !important;
-    background: var(--gold) !important;
-  }
-
   .grain {
     position: fixed;
     inset: -50%;

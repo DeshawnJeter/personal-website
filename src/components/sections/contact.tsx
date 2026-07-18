@@ -5,12 +5,14 @@ import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/motion/reveal";
 import { chapters, contact, site } from "@/lib/content";
+import { triggerCursorState } from "@/lib/cursor-events";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    triggerCursorState("loading", 500);
     const form = new FormData(event.currentTarget);
     const name = String(form.get("name") ?? "");
     const email = String(form.get("email") ?? "");
@@ -22,6 +24,11 @@ export function Contact() {
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setSent(true);
+    triggerCursorState("success", 1400);
+  };
+
+  const handleInvalid = () => {
+    triggerCursorState("error", 1200);
   };
 
   const chapter = chapters.find((c) => c.id === "contact")!;
@@ -68,6 +75,7 @@ export function Contact() {
         <Reveal delay={0.1}>
           <form
             onSubmit={handleSubmit}
+            onInvalidCapture={handleInvalid}
             className="border-border bg-card/40 rounded-2xl border p-7"
           >
             <div className="space-y-5">

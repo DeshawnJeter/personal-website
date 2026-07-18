@@ -9,10 +9,10 @@ export function getFlag(key: string): boolean {
   }
 }
 
-export function setFlag(key: string): void {
+export function setFlag(key: string, value = true): void {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.setItem(PREFIX + key, "1");
+    window.localStorage.setItem(PREFIX + key, value ? "1" : "0");
   } catch {
     // localStorage unavailable (private mode, disabled) — fail silently,
     // the flag simply won't persist across visits.

@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav, primaryNav } from "@/lib/content";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { CursorToggle } from "@/components/layout/cursor-toggle";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -60,6 +61,7 @@ export function SiteHeader() {
           >
             Resume
           </Link>
+          <CursorToggle />
           <ThemeToggle />
           <button
             type="button"

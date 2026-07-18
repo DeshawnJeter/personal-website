@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useMagneticHover } from "@/hooks/use-magnetic-hover";
 
 type CtaLinkProps = {
   href: string;
@@ -28,17 +31,18 @@ export function CtaLink({
 }: CtaLinkProps) {
   const isExternal = href.startsWith("http") || href.startsWith("mailto:");
   const classes = cn(base, variants[variant], className);
+  const magneticRef = useMagneticHover<HTMLAnchorElement>();
 
   if (isExternal) {
     return (
-      <a href={href} className={classes}>
+      <a ref={magneticRef} href={href} className={classes}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link ref={magneticRef} href={href} className={classes}>
       {children}
     </Link>
   );

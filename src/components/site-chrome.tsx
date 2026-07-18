@@ -14,8 +14,8 @@ const SmoothScroll = dynamic(
   () => import("@/components/motion/smooth-scroll").then((m) => m.SmoothScroll),
   { ssr: false },
 );
-const CursorGlow = dynamic(
-  () => import("@/components/layout/cursor-glow").then((m) => m.CursorGlow),
+const CursorEngine = dynamic(
+  () => import("@/components/motion/cursor-engine").then((m) => m.CursorEngine),
   { ssr: false },
 );
 const GrainOverlay = dynamic(
@@ -67,7 +67,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
             </>
           )}
           <GrainOverlay />
-          <CursorGlow />
+          <CursorEngine />
           <SiteHeader />
           <SideRail />
         </div>
