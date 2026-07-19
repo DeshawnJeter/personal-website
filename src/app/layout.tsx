@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   keywords: [
-    "DeShawn Jeter",
+    "Deshawn Jeter",
     "software engineer",
     "creative technologist",
     "frontend developer",

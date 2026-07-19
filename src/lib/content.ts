@@ -1,9 +1,9 @@
 // Single source of truth for the site's real, authentic content.
 // Nothing in here is invented — it's carried over verbatim in meaning
-// from the previous version of this site and DeShawn's own words.
+// from the previous version of this site and Deshawn's own words.
 
 export const site = {
-  name: "DeShawn Jeter",
+  name: "Deshawn Jeter",
   role: "Creative technologist & software engineer",
   tagline: "Where imagination becomes architecture.",
   description:

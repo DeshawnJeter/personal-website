@@ -36,7 +36,7 @@ export function SiteHeader() {
             className="border-accent h-2.5 w-2.5 shrink-0 rotate-45 border"
             aria-hidden="true"
           />
-          DeShawn Jeter
+          Deshawn Jeter
         </Link>
 
         <nav

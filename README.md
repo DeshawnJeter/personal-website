@@ -1,6 +1,6 @@
 # Personal Website
 
-DeShawn Jeter's portfolio — a Next.js site built around who he is and how he
+Deshawn Jeter's portfolio — a Next.js site built around who he is and how he
 works, not just a list of projects.
 
 ## Stack
