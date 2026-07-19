@@ -4,7 +4,7 @@
 
 export const site = {
   name: "Deshawn Jeter",
-  role: "Creative technologist & software engineer",
+  role: "Creative architect",
   tagline: "Where imagination becomes architecture.",
   description:
     "Creative technologist, systems thinker, builder. I don't just build software — I build experiences people remember.",

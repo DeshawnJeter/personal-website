@@ -40,7 +40,7 @@ export function Hero() {
 
       <Container className="relative z-[2] text-center">
         <p className="text-accent mx-auto mb-6 flex w-fit items-center gap-3 font-mono text-[11px] tracking-[0.34em] uppercase">
-          Creative technologist &amp; software engineer
+          Creative architect
         </p>
 
         <h1 className="text-hero text-foreground mx-auto max-w-4xl leading-[1.02]">
