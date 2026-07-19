@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SideRail } from "@/components/layout/side-rail";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { CathedralDoors } from "@/components/motion/cathedral-doors";
 
 // Purely decorative / progressive-enhancement pieces — deferred out of the
 // critical bundle so they never compete with hydration for main-thread time.
@@ -52,6 +53,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
         <div className="print:hidden">
           {isHomepage && (
             <>
+              <CathedralDoors />
               <Fog />
               <KonamiEasterEgg />
             </>
@@ -61,7 +63,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
           <SiteHeader />
           <SideRail />
         </div>
-        <main id="main" className="flex-1">
+        <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
           {children}
         </main>
         <div className="print:hidden">

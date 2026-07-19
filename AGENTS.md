@@ -59,6 +59,12 @@ when printing. The narrative-only pieces (fog, the Konami easter egg)
 are additionally gated behind `pathname === "/"` in
 that same file — `/resume` stays clean. If you add a new global decorative
 piece, follow this pattern rather than mounting it directly in a section.
+`CathedralDoors` (`src/components/motion/cathedral-doors.tsx`) is the one
+exception: it's the homepage entrance gate — closed doors covering the full
+viewport until clicked — and is mounted the same `isHomepage`-gated way but
+imported normally rather than via `next/dynamic({ ssr: false })`, since it
+must be the actual first paint (no flash of Hero underneath), not a
+progressive enhancement.
 
 ## Workflow
 
