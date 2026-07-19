@@ -71,12 +71,6 @@ export function SiteHeader() {
           >
             LinkedIn
           </a>
-          <Link
-            href="/resume"
-            className="border-accent/60 text-accent hover:bg-accent/10 hidden rounded-sm border px-4 py-2 font-mono text-[10px] tracking-[0.2em] uppercase transition-colors sm:inline-block"
-          >
-            Resume
-          </Link>
           <CursorToggle />
           <ThemeToggle />
           <button
