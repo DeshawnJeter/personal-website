@@ -90,10 +90,10 @@ export function Hero() {
           <CtaLink href="/story" variant="solid">
             Explore my story
           </CtaLink>
-          <CtaLink href="/work" variant="outline">
+          <CtaLink href="/work" variant="solid">
             Current project
           </CtaLink>
-          <CtaLink href="/resume" variant="gold">
+          <CtaLink href="/resume" variant="solid">
             View resume
           </CtaLink>
         </motion.div>
