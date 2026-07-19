@@ -14,7 +14,7 @@ export function CathedralDoors() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(true);
   const reduceMotion = useReducedMotion();
-  const duration = reduceMotion ? 0.4 : 1.15;
+  const duration = reduceMotion ? 0.25 : 0.6;
 
   useEffect(() => {
     document.body.style.overflow = mounted ? "hidden" : "";
